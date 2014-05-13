@@ -21,9 +21,9 @@ populateDropdown = function () {
 (function () {
     "use strict";
 
-    wcfServiceUrl = "http://localhost/MenuWcfRestService/RestaurantService.svc/";
+    wcfServiceUrl = "http://localhost:9250/RestaurantService.svc/";
 
-// Execute when the DOM is fully loaded
+    // Execute when the DOM is fully loaded
     $(document).ready(function () {
         getRestaurantMenu();
     });
@@ -216,4 +216,4 @@ populateDropdown = function () {
             }
         });
     };
-} ());
+}());
