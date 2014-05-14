@@ -1,19 +1,9 @@
+/*global $ */
+/*jslint browser: true, devel: true, plusplus: true, white: true */
+
 var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     formatRowColor, formatRowCurrency, getRestaurantMenu, handleOrder,
     orderTotal, populateDropdown, tableToJson, sendOrder, wcfServiceUrl;
-
-// Populate drop-down box with JSON data (menu)
-populateDropdown = function () {
-    var id, price, description;
-    id = this.Id;
-    price = this.Price;
-    description = this.Description;
-    $("#select_item")
-        .append($("<option></option>")
-        .val(id)
-        .html(description)
-        .attr("title", price));
-};
 
 // User strict for all other functions
 // Based on post at:
@@ -55,6 +45,19 @@ populateDropdown = function () {
                 $.each(menu, populateDropdown); // must call function as var
             }
         });
+    };
+
+    // Populate drop-down box with JSON data (menu)
+    populateDropdown = function () {
+        var id, price, description;
+        id = this.Id;
+        price = this.Price;
+        description = this.Description;
+        $("#select_item")
+            .append($("<option></option>")
+            .val(id)
+            .html(description)
+            .attr("title", price));
     };
 
     // Add selected menu item to order table

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantWcfService", "RestaurantWcfService\RestaurantWcfService.csproj", "{1FC1B08C-AD15-4795-B3F0-652DB2164393}"
 EndProject
@@ -27,6 +27,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestaurantDemoSite", "http:
 		Release.AspNetCompiler.Debug = "False"
 		SlnRelativePath = "RestaurantDemoSite\"
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CF60607E-D300-41A9-BEB9-B5F4FE513E0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
