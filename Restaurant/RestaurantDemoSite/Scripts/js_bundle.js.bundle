@@ -14,7 +14,6 @@
     </settings>
     <!--The order of the <file> elements determines the order of the file contents when bundled.-->
     <files>
-        <file>/Scripts/jquery-2.1.0-vsdoc.js</file>
         <file>/Scripts/jquery-2.1.0.js</file>
         <file>/Scripts/jquery.formatCurrency-1.4.0.js</file>
         <file>/Scripts/restaurant.js</file>

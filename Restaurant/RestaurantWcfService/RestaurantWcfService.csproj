@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RestaurantService.svc" />
+    <Content Include="TestPage.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -94,6 +95,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\AzureVM.pubxml" />
     <None Include="Properties\PublishProfiles\PublishRestaurantService.pubxml" />
   </ItemGroup>
   <PropertyGroup>

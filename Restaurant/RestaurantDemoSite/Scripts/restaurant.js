@@ -3,15 +3,16 @@
 
 var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     formatRowColor, formatRowCurrency, getRestaurantMenu, handleOrder,
-    orderTotal, populateDropdown, tableToJson, sendOrder, wcfServiceUrl;
+    orderTotal, populateDropdown, tableToJson, sendOrder, serviceUrl,
+    serviceHost, servicePort;
 
-// User strict for all other functions
-// Based on post at:
-// http://ejohn.org/blog/ecmascript-5-strict-mode-json-and-more/
 (function () {
     "use strict";
 
-    wcfServiceUrl = "http://localhost:9250/RestaurantService.svc/";
+    // Construct WCF service address
+    serviceHost = location.hostname;
+    servicePort = 9250;
+    serviceUrl = "http://" + serviceHost + ":" + servicePort + "/RestaurantService.svc/";
 
     // Execute when the DOM is fully loaded
     $(document).ready(function () {
@@ -32,7 +33,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     getRestaurantMenu = function () {
         $.ajax({
             cache: true,
-            url: wcfServiceUrl + "GetCurrentMenu",
+            url: serviceUrl + "GetCurrentMenu",
             data: "{}",
             type: "GET",
             jsonpCallback: "RestaurantMenu",
@@ -73,11 +74,13 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         if (order_item_selected_quantity < 1 ||
         order_item_selected_quantity > 99 ||
         isNaN(order_item_selected_quantity)) {
+            $("#select_quantity").focus();
             return;
         }
 
         // Can't add 'Select an Item...' to order
         if ($("#select_item").get(0).selectedIndex === 0) {
+            $("#select_item").focus();
             return;
         }
 
@@ -206,7 +209,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         var jsonString = JSON.stringify({ restaurantOrder: data });
 
         $.ajax({
-            url: wcfServiceUrl + "SendOrder?restaurantOrder=" + jsonString,
+            url: serviceUrl + "SendOrder?restaurantOrder=" + jsonString,
             type: "GET",
             contentType: "application/javascript",
             dataType: "jsonp",
