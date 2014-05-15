@@ -96,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\AzureVM.pubxml" />
-    <None Include="Properties\PublishProfiles\PublishRestaurantService.pubxml" />
+    <None Include="Properties\PublishProfiles\LocalMachine.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
