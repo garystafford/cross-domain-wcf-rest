@@ -106,7 +106,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
             order_item_selected_price +
             "</td><td class='order_item_subtotal'>" +
             order_item_selected_subtotal +
-            "</td><td><input type='button' value='remove' /></td>")
+            "</td><td><input type='button' value='remove' class='btn btn-danger btn-sm'/></td>")
             .appendTo("#order_cart").hide();
 
         // Display grand total of order_item_selected_id
@@ -128,8 +128,8 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
 
     // Create alternating colored rows in order table
     formatRowColor = function () {
-        $("#order_cart tr.order_row:odd").css("background-color", "#FAF9F9");
-        $("#order_cart tr.order_row:even").css("background-color", "#FFF");
+        $("#order_cart tr.order_row:odd").addClass("info");
+        $("#order_cart tr.order_row:even").removeClass("info");
     };
 
     // Format new order item values to currency

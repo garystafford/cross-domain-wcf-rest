@@ -1,37 +1,9 @@
-﻿body {
-    margin: 20px;
-    font-family: Sans-Serif;
-    font-size: 9pt;
-}
-
-#select, #select td {
-    border-width: 0;
-    padding: 6px;
-}
-
-table, td, th {
-    border: solid 1px #C0C0C0;
-    border-collapse: collapse;
-    padding: 6px;
-    margin: 0;
-}
-
-th {
-    background: #E6EEEE;
-}
-
-thead th {
+﻿thead th {
     text-align: center;
 }
 
 tbody td, tfoot th {
     text-align: right;
-}
-
-caption {
-    font-size: 10pt;
-    font-weight: bold;
-    margin: 5px;
 }
 
 #order_total {
@@ -47,5 +19,20 @@ caption {
 }
 
 #select_quantity {
-    width: 40px;
+    width: 50px;
+}
+
+#select_item {
+    width: 225px;
+}
+
+.vertical-spacer {
+    height: 50px;
+    width: 100%;
+    vertical-align: middle;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: block;
 }
