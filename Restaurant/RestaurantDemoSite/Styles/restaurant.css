@@ -27,7 +27,7 @@ tbody td, tfoot th {
 }
 
 .vertical-spacer {
-    height: 50px;
+    height: 25px;
     width: 100%;
     vertical-align: middle;
     font-size: 0;

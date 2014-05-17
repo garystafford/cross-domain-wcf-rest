@@ -11410,7 +11410,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         // Write out menu selection to table row
         $("<tr class='order_row'></tr>").html("<td>" +
             order_item_selected_quantity +
-            "</td><td class='order_item_id'>" +
+            "</td><td class='order_item_id hidden'>" +
             order_item_selected_id +
             "</td><td class='order_item_name'>" +
             order_item_selected_description +
