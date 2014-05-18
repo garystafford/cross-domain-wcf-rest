@@ -3,9 +3,13 @@ using System.Runtime.Serialization;
 
 namespace Restaurant
 {
-    [DataContractAttribute ]
+    [DataContractAttribute]
     public class OrderResponse
     {
+        public OrderResponse()
+        {
+        }
+
         public OrderResponse(String OrderTime, Guid OrderId, int ItemCount, String OrderMessage)
         {
             this.OrderTime = OrderTime;

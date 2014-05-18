@@ -11352,7 +11352,10 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
             contentType: "application/javascript",
             dataType: "jsonp",
             error: function () {
-                alert("Menu failed!");
+                $("#orderResponse").html(
+                    "<p class='h4 callout-danger'>Error</p>" +
+                    "Menu failed to load."
+                );
             },
             success: function (menu) {
                 $.each(menu, populateDropdown); // must call function as var
@@ -11484,7 +11487,10 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     // Call functions to prepare order and send to WCF service
     handleOrder = function () {
         if ($("#order_cart tr.order_row:last").length === 0) {
-            alert("No items selected...");
+            $("#orderResponse").html(
+                "<p class='h4 callout-danger'>Error</p>" +
+                "Your order is empty?"
+            );
         } else {
             var data = tableToJson();
             sendOrder(data);
@@ -11527,15 +11533,18 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
             dataType: "jsonp",
             jsonpCallback: "OrderResponse",
             error: function () {
-                alert("Order failed!");
+                $("#orderResponse").html(
+                    "<p class='h4 callout-danger'>Error</p>" +
+                    "Order failed."
+                );
             },
             success: function (confirmation) {
-                $("#orderResponse").append(
+                $("#orderResponse").html(
                     "<p class='h4'>Confirmation</p>" +
                     "Time: " + confirmation.OrderTime + "<br />" +
                     "Order Id: " + confirmation.OrderId + "<br />" +
                     //"Items: " + confirmation.ItemCount + "<br />" +
-                    "Message: " + confirmation.OrderMessage + "</p>"
+                    "Message: " + confirmation.OrderMessage
                 );
             }
         });

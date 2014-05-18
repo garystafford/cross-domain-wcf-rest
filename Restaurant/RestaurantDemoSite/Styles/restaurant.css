@@ -36,3 +36,7 @@ tbody td, tfoot th {
     border: 0;
     display: block;
 }
+
+.callout-danger {
+    color: #ff0000;
+}

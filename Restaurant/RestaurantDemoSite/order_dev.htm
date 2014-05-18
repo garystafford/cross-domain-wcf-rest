@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="Styles/restaurant.css" />
     <link rel="stylesheet" href="Content/bootstrap.css" />
     <link rel="stylesheet" href="Content/bootstrap-theme.css" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Restaurant Menu Order Demo - Development Version</title>
@@ -24,7 +23,7 @@
                     <option selected="selected">Select an Item...</option>
                 </select>
             </div>
-            <button type="button" class="btn btn-primary btn-sm" id="add_btn">Add</button>
+            <button type="button" class="btn btn-primary" id="add_btn">Add</button>
         </form>
     </div>
     <div class="container col-md-8 vertical-spacer">
@@ -51,7 +50,7 @@
                         Subtotal
                     </th>
                     <th>
-                        Action
+                        Remove
                     </th>
                 </tr>
             </thead>
@@ -65,11 +64,17 @@
                         $0.00
                     </th>
                     <th>
-                        <input id="order_btn" class="btn btn-primary btn-sm" type="button" value="Order!" />
                     </th>
                 </tr>
             </tfoot>
         </table>
+        <button id="order_btn" class="btn btn-success">Order!</button>
+    </div>
+    <div class="container col-md-8 vertical-spacer">
+        <hr />
+    </div>
+    <div class="container col-md-8">
+        <p id="orderResponse"></p>
     </div>
     <script src="Scripts/jquery-2.1.0.js" type="text/javascript"></script>
     <script src="Scripts/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>

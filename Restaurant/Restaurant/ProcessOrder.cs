@@ -16,7 +16,7 @@ namespace Restaurant
             {
                 Console.WriteLine("Error: Empty message string...");
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(), orderId, 0, "Error: Empty message string...");
+                    DateTime.Now.ToLocalTime().ToString(), orderId, 0, "Sorry, blank order received.");
             }
 
             try

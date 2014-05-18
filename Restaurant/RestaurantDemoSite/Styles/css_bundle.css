@@ -37,6 +37,10 @@ tbody td, tfoot th {
     display: block;
 }
 
+.callout-danger {
+    color: #ff0000;
+}
+
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
