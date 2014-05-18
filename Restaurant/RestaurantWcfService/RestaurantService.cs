@@ -1,6 +1,4 @@
 ﻿using Restaurant;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Activation;
 
@@ -25,12 +23,12 @@ namespace RestaurantWcfService
             return menuToReturn;
         }
 
-        public string SendOrder(string restaurantOrder)
+        public OrderResponse SendOrder(string restaurantOrder)
         {
             //Instantiates new ProcessOrder object and
             //passes JSON-format order string to ProcessOrderJSON method
             var orderProcessor = new ProcessOrder();
-            var orderResponse = 
+            var orderResponse =
                 orderProcessor.ProcessOrderJSON(restaurantOrder);
 
             return orderResponse;

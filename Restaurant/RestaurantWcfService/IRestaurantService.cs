@@ -25,6 +25,6 @@ namespace RestaurantWcfService
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "SendOrder?restaurantOrder={restaurantOrder}")]
-        string SendOrder(string restaurantOrder);
+        OrderResponse SendOrder(string restaurantOrder);
     }
 }

@@ -11314,9 +11314,9 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 /*jslint browser: true, devel: true, plusplus: true, white: true */
 
 var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
-    formatRowColor, formatRowCurrency, getRestaurantMenu, handleOrder,
-    orderTotal, populateDropdown, tableToJson, sendOrder, serviceUrl,
-    serviceHost, servicePort;
+  formatRowColor, formatRowCurrency, getRestaurantMenu, handleOrder,
+  orderTotal, populateDropdown, tableToJson, sendOrder, serviceUrl,
+  serviceHost, servicePort;
 
 (function () {
     "use strict";
@@ -11367,7 +11367,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         price = this.Price;
         description = this.Description;
         $("#select_item")
-            .append($("<option></option>")
+          .append($("<option></option>")
             .val(id)
             .html(description)
             .attr("title", price));
@@ -11376,16 +11376,16 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     // Add selected menu item to order table
     addMenuItemToOrder = function () {
         var order_item_selected_quantity, selected_item,
-            order_item_selected_id, order_item_selected_description,
-            order_item_selected_price, order_item_selected_subtotal;
+          order_item_selected_id, order_item_selected_description,
+          order_item_selected_price, order_item_selected_subtotal;
 
         // Limit order quantity to between 1-99
         order_item_selected_quantity =
-            parseInt($("#select_quantity").val(), 10);
+          parseInt($("#select_quantity").val(), 10);
 
         if (order_item_selected_quantity < 1 ||
-        order_item_selected_quantity > 99 ||
-        isNaN(order_item_selected_quantity)) {
+          order_item_selected_quantity > 99 ||
+          isNaN(order_item_selected_quantity)) {
             $("#select_quantity").focus();
             return;
         }
@@ -11404,22 +11404,22 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
 
         // Calculate subtotal
         order_item_selected_subtotal =
-            calculateSubtotal(order_item_selected_price,
+          calculateSubtotal(order_item_selected_price,
             order_item_selected_quantity);
 
         // Write out menu selection to table row
         $("<tr class='order_row'></tr>").html("<td>" +
-            order_item_selected_quantity +
-            "</td><td class='order_item_id hidden'>" +
-            order_item_selected_id +
-            "</td><td class='order_item_name'>" +
-            order_item_selected_description +
-            "</td><td class='order_item_price'>" +
-            order_item_selected_price +
-            "</td><td class='order_item_subtotal'>" +
-            order_item_selected_subtotal +
-            "</td><td><input type='button' value='remove' class='btn btn-danger btn-sm'/></td>")
-            .appendTo("#order_cart").hide();
+          order_item_selected_quantity +
+          "</td><td class='order_item_id hidden'>" +
+          order_item_selected_id +
+          "</td><td class='order_item_name'>" +
+          order_item_selected_description +
+          "</td><td class='order_item_price'>" +
+          order_item_selected_price +
+          "</td><td class='order_item_subtotal'>" +
+          order_item_selected_subtotal +
+          "</td><td><input type='button' value='remove' class='btn btn-danger btn-sm'/></td>")
+          .appendTo("#order_cart").hide();
 
         // Display grand total of order_item_selected_id
         $("#order_cart tr.order_row:last").fadeIn("medium", function () {
@@ -11492,7 +11492,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     };
 
     // Convert HTML table data into an array
-    // Based on code from: 
+    // Based on code from:
     // http://johndyer.name/post/table-tag-to-json-data.aspx
     tableToJson = function () {
         var data, headers, orderCartTable, myTableRow, rowData, i, j;
@@ -11530,7 +11530,13 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
                 alert("Order failed!");
             },
             success: function (confirmation) {
-                alert(confirmation.toString());
+                $("#orderResponse").append(
+                    "<p class='h4'>Confirmation</p>" +
+                    "Time: " + confirmation.OrderTime + "<br />" +
+                    "Order Id: " + confirmation.OrderId + "<br />" +
+                    //"Items: " + confirmation.ItemCount + "<br />" +
+                    "Message: " + confirmation.OrderMessage + "</p>"
+                );
             }
         });
     };
