@@ -13,8 +13,29 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_JsonFilePath_Exists()
         {
-            bool jsonFilePathExists = Directory.Exists(Restaurant.ProcessOrder.STR_JsonFilePath);
+            String jsonFilePath = Restaurant.ProcessOrder.STR_JsonFilePath;
+            Console.WriteLine("Restaurant.ProcessOrder.STR_JsonFilePath: " + jsonFilePath);
+
+            bool jsonFilePathExists = Directory.Exists(jsonFilePath);
+
             Assert.IsTrue(jsonFilePathExists);
+        }
+
+        [TestMethod]
+        public void Test_JsonFilePath_FileCountIncreasesByOne()
+        {
+            int jsonFilePathFileCountBefore =
+                Directory.GetFiles(Restaurant.ProcessOrder.STR_JsonFilePath).GetLength(0);
+            Console.WriteLine("jsonFilePathFileCountBefore: " + jsonFilePathFileCountBefore);
+
+            String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
+
+            processOrder.ProcessOrderJSON(restaurantOrder);
+            int jsonFilePathFileCountAfter =
+                Directory.GetFiles(Restaurant.ProcessOrder.STR_JsonFilePath).GetLength(0);
+            Console.WriteLine("jsonFilePathFileCountAfter: " + jsonFilePathFileCountAfter);
+
+            Assert.AreEqual(jsonFilePathFileCountBefore + 1, jsonFilePathFileCountAfter);
         }
 
         [TestMethod]
