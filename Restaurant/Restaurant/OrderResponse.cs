@@ -6,11 +6,8 @@ namespace Restaurant
     [DataContractAttribute]
     public class OrderResponse
     {
-        public OrderResponse()
-        {
-        }
-
-        public OrderResponse(String OrderTime, Guid OrderId, int ItemCount, String OrderMessage)
+        public OrderResponse(String OrderTime, Guid OrderId, 
+            int ItemCount, String OrderMessage)
         {
             this.OrderTime = OrderTime;
             this.OrderId = OrderId;

@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="ProcessOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantMenu.cs" />
+    <Compile Include="RestaurantOrder.cs" />
+    <Compile Include="OrderResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Restaurant\Restaurant.csproj">
