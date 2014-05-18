@@ -41,7 +41,7 @@ namespace RestaurantUnitTests
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_EmptyOrder_ReturnValue_Is()
+        public void Test_ProcessOrderJSON_EmptyOrder__HasExpectedValues()
         {
             Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(String.Empty);
 
@@ -58,7 +58,7 @@ namespace RestaurantUnitTests
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_OrderMessage_NotError()
+        public void Test_ProcessOrderJSON_NewOrder_HasExpectedValues()
         {
             String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
             Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(restaurantOrder);
