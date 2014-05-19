@@ -5,17 +5,6 @@
 # Create directory and security settings for restaurant orders
 ###############################################################
 
-#The possible values for Rights are 
-# ListDirectory, ReadData, WriteData 
-# CreateFiles, CreateDirectories, AppendData 
-# ReadExtendedAttributes, WriteExtendedAttributes, Traverse
-# ExecuteFile, DeleteSubdirectoriesAndFiles, ReadAttributes 
-# WriteAttributes, Write, Delete 
-# ReadPermissions, Read, ReadAndExecute 
-# Modify, ChangePermissions, TakeOwnership
-# Synchronize, FullControl
-
-
 # Create new restaurant orders directory
 $newDirectory = "c:\RestaurantOrders"
 
