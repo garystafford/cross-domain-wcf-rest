@@ -13,7 +13,6 @@ namespace RestaurantUnitTests
             var orderResponse = new Restaurant.OrderResponse(
                 DateTime.Now.ToLocalTime().ToString(),
                 Guid.NewGuid(), 1, "Test Message");
-
             Assert.AreEqual(orderResponse.ItemCount, 1);
         }
     }

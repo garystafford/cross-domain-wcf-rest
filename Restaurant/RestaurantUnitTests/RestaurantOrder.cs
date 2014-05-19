@@ -14,7 +14,6 @@ namespace RestaurantUnitTests
             var orderList = new Collection<OrderItem>();
             orderList.Add(orderItem);
             var restaurantOrder = new Restaurant.RestaurantOrder(orderList);
-
             Assert.AreEqual(restaurantOrder.Count, 1);
         }
     }

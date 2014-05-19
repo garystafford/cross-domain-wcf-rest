@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" Layout="ForceDirected" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Newtonsoft.Json 6.0.3" Category="Package" Bounds="23.1682014640495,167.88,135.453333333333,25.96" Label="Newtonsoft.Json 6.0.3" />
+    <Node Id="Restaurant" Category="Project" Bounds="4.2632564145606E-14,223.84,76.6466666666666,25.96" Label="Restaurant" />
+    <Node Id="RestaurantDemoSite" Category="Project" Bounds="1.4210854715202E-14,55.96,128.326666666667,25.96" Label="RestaurantDemoSite" />
+    <Node Id="RestaurantWcfService" Category="Project" Bounds="106.646766666667,223.84,134.453333333333,25.96" Label="RestaurantWcfService" />
+    <Node Id="bootstrap 3.1.1" Category="Package" Bounds="87.1242399595538,1.4210854715202E-14,99.57,25.96" Label="bootstrap 3.1.1" />
+    <Node Id="jQuery 2.1.0" Category="Package" Bounds="158.326766666667,55.96,82.8966666666666,25.96" Label="jQuery 2.1.0" />
+    <Node Id="jQuery-vsdoc 2.1.0" Category="Package" Bounds="82.7320763009469,111.92,118.176666666667,25.96" Label="jQuery-vsdoc 2.1.0" />
+  </Nodes>
+  <Links>
+    <Link Source="Restaurant" Target="Newtonsoft.Json 6.0.3" Category="Installed Package" Bounds="50.5173741065648,200.3994542422,22.0211841847004,23.4405457578002" />
+    <Link Source="RestaurantDemoSite" Target="bootstrap 3.1.1" Category="Installed Package" Bounds="81.0368477723674,31.4474960523008,31.8653381585809,24.5125039476992" />
+    <Link Source="RestaurantDemoSite" Target="jQuery-vsdoc 2.1.0" Category="Installed Package" Bounds="82.1760004238676,81.92,34.3300248938393,24.7383533422546" />
+    <Link Source="RestaurantWcfService" Target="Newtonsoft.Json 6.0.3" Category="Installed Package" Bounds="117.603606531339,198.872133582321,37.022832943346,24.9678664176794" />
+    <Link Source="bootstrap 3.1.1" Target="jQuery 2.1.0" Category="Package Dependency" Bounds="151.491063821687,25.96,26.9797373672812,24.0159937699365" />
+    <Link Source="jQuery-vsdoc 2.1.0" Target="jQuery 2.1.0" Category="Package Dependency" Bounds="155.263080844914,88.1715672727145,24.5949439846489,23.7484327272855" />
+  </Links>
+  <Categories>
+    <Category Id="Installed Package" />
+    <Category Id="Package" />
+    <Category Id="Package Dependency" />
+    <Category Id="Project" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>

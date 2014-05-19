@@ -11,7 +11,6 @@ namespace RestaurantUnitTests
         public void Test_RestaurantMenu_DefaultConstructor_HasMutlipleItems()
         {
             var restaurantMenu = new Restaurant.RestaurantMenu();
-
             Assert.IsTrue(restaurantMenu.Count > 1);
         }
 
@@ -22,7 +21,6 @@ namespace RestaurantUnitTests
             var menuList = new Collection<MenuItem>();
             menuList.Add(menuItem);
             var restaurantMenu = new Restaurant.RestaurantMenu(menuList);
-
             Assert.AreEqual(restaurantMenu.Count, 1);
         }
     }
