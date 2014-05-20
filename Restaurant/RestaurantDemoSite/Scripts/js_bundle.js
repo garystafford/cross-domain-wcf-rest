@@ -11489,7 +11489,7 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         if ($("#order_cart tr.order_row:last").length === 0) {
             $("#orderResponse").html(
                 "<p class='h4 callout-danger'>Error</p>" +
-                "Your order is empty?"
+                "Your order is empty."
             );
         } else {
             var data = tableToJson();
