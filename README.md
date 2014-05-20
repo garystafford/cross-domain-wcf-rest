@@ -6,7 +6,7 @@ Updated project for Blog Post: [Consuming Cross-Domain WCF REST Services with jQ
 
 #### Installation and Configuration
 *  Clone GitHub Repository
-  *  Run command: ```git clone https://github.com/garystafford/cross-domain-wcf-rest```
+  *  Run command: ```git clone --branch=rev2014 https://github.com/garystafford/cross-domain-wcf-rest```
 *  Set-up Environment Variables
   *  Edit (3) environment variables values in script: Create_EnvironmentVariables.ps1 
   *  Run PS script: Create_EnvironmentVariables.ps1
