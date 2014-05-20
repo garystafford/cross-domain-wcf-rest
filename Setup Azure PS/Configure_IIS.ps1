@@ -1,7 +1,6 @@
 ﻿###############################################################
 # Author: Gary A. Stafford
 # Revised: 2014-05-14
-# Prep Azure VM for 'cross-domain-wcf-rest' project deployment
 # Create main website and WCF service website
 ###############################################################
 

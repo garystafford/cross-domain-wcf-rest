@@ -2,7 +2,7 @@
 # Author: Gary A. Stafford
 # Revised: 2014-05-19
 # Script creates required Web Publish Profile environment variables
-# for Azure VM. Two used in profile. One in msbuild command.
+# for Azure VM. Two used in profile, one in msbuild command.
 ########################################################################
 
 # http://technet.microsoft.com/en-us/library/ff730964.aspx
