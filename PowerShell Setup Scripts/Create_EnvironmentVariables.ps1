@@ -11,4 +11,6 @@
 [Environment]::SetEnvironmentVariable("AZURE_VM_USERNAME", "MSDepSvcUser", "User")
 [Environment]::SetEnvironmentVariable("AZURE_VM_PASSWORD", "WebDeploy123", "User")
 
+# Following command will not return values first time.
+# You must restart the PS shell to see the new variable.
 Get-ChildItem Env: | Where name -Like "AZURE_VM_*"
