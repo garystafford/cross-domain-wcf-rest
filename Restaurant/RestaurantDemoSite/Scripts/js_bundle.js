@@ -11543,7 +11543,6 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
                     "<p class='h4'>Confirmation</p>" +
                     "Time: " + confirmation.OrderTime + "<br />" +
                     "Order Id: " + confirmation.OrderId + "<br />" +
-                    //"Items: " + confirmation.ItemCount + "<br />" +
                     "Message: " + confirmation.OrderMessage
                 );
             }
