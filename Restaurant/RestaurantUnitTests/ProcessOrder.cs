@@ -39,28 +39,28 @@ namespace RestaurantUnitTests
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_EmptyOrder__HasExpectedValues()
+        public void Test_ProcessOrderJSON_EmptyOrder_ReturnsExpectedMessage()
         {
             Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(String.Empty);
             Assert.AreEqual(orderResponse.OrderMessage, "Sorry, empty order received.");
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_BadJson__ThrowsException()
+        public void Test_ProcessOrderJSON_BadJson_ThrowsException()
         {
             Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON("This is not good JSON!");
             Assert.IsTrue(orderResponse.OrderMessage.Contains("StartIndex cannot be less than zero."));
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_ReturnValue_IsNotNull()
+        public void Test_ProcessOrderJSON_NewOrder_ReturnValueIsNotNull()
         {
             String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
             Assert.IsNotNull(processOrder.ProcessOrderJSON(restaurantOrder));
         }
 
         [TestMethod]
-        public void Test_ProcessOrderJSON_NewOrder_HasExpectedValues()
+        public void Test_ProcessOrderJSON_NewOrder_ReturnsExpectedMessage()
         {
             String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
             Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(restaurantOrder);

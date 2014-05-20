@@ -5,6 +5,7 @@
 ###############################################################
 
 # Change for your local environment
+# [Environment]::SetEnvironmentVariable("GIT_REPOS", "path\to\my\local\git\repos", "Machine")
 $gitRepositories = $env:GIT_REPOS
 
 # WCF Service
