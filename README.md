@@ -25,7 +25,8 @@ New Blog Post (In-progress): [Cloud-based Continuous Integration and Delivery fo
   *  MSBuild moved with VS2013. Seems to vary by machine. Do a file search...
   *  If not setup, add path to PATH environment variable (i.e. 'C:\Program Files (x86)\MSBuild\12.0\Bin')
   *  Good post about VS2013 MSBuild: http://timrayburn.net/blog/visual-studio-2013-and-msbuild/
-#### Setting up AppVeyor to Deploy to Azure VM
+
+#### Setting up AppVeyor
   *  Settings -> Environment -> Environment variables -> Add AZURE_VM_HOSTNAME, AZURE_VM_USERNAME, and AZURE_VM_PASSWORD
   *  Settings -> Build -> Build Scipt -> PS -> . "PowerShell Setup Scripts\Deploy_Projects_AppVeyor.ps1"
   *  Settings -> Test -> Before test script -> PS -> . "PowerShell Setup Scripts\Create_OrderDirectory.ps1"
