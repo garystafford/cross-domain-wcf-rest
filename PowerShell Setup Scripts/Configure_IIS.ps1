@@ -8,14 +8,14 @@
 $newSite = "MenuWcfRestService"
 
 if (-not (Test-Path IIS:\Sites\$newSite)){
-    New-Website -Name $newSite -Port 9250 -PhysicalPath `
-  	c:\$newSite -ApplicationPool "DefaultAppPool"
+  New-Website -Name $newSite -Port 9250 -PhysicalPath `
+    c:\$newSite -ApplicationPool "DefaultAppPool"
 }
 
 # Create WCF service website in IIS
 $newSite = "RestaurantDemoSite"
 
 if (-not (Test-Path IIS:\Sites\$newSite)){
-    New-Website -Name $newSite -Port 9255 -PhysicalPath `
-		c:\$newSite -ApplicationPool "DefaultAppPool"
+  New-Website -Name $newSite -Port 9255 -PhysicalPath `
+    c:\$newSite -ApplicationPool "DefaultAppPool"
 }

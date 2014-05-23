@@ -9,13 +9,13 @@
 
 # Create environment variables
 [Environment]::SetEnvironmentVariable("AZURE_VM_HOSTNAME", `
-	"{YOUR HOSTNAME HERE}", "User")
+  "{YOUR HOSTNAME HERE}", "User")
 
 [Environment]::SetEnvironmentVariable("AZURE_VM_USERNAME", `
-	"{YOUR USERNME HERE}", "User")
+  "{YOUR USERNME HERE}", "User")
 
 [Environment]::SetEnvironmentVariable("AZURE_VM_PASSWORD", `
-	"{YOUR PASSWORD HERE}", "User")
+  "{YOUR PASSWORD HERE}", "User")
 
 # Following command will not return values first time.
 # You must restart the PS shell to use the new variable.

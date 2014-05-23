@@ -8,11 +8,11 @@
 $newDirectory = "c:\RestaurantOrders"
 
 if (-not (Test-Path $newDirectory)){
-    New-Item -Type directory -Path $newDirectory
+  New-Item -Type directory -Path $newDirectory
 }
 
 $acl = Get-Acl $newDirectory
 $ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
-    "INTERACTIVE","Modify","ContainerInherit, ObjectInherit", "None", "Allow")
+  "INTERACTIVE","Modify","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl

@@ -19,12 +19,12 @@
 $newDirectory = "c:\RestaurantDemoSite"
 
 if (-not (Test-Path $newDirectory)){
-    New-Item -Type directory -Path $newDirectory
+  New-Item -Type directory -Path $newDirectory
 }
 
 $acl = Get-Acl $newDirectory
 $ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
-    "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
+  "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl
 
@@ -33,16 +33,16 @@ Set-Acl $newDirectory $acl
 $newDirectory = "c:\MenuWcfRestService"
 
 if (-not (Test-Path $newDirectory)){
-    New-Item -Type directory -Path $newDirectory
+  New-Item -Type directory -Path $newDirectory
 }
 
 $acl = Get-Acl $newDirectory
 $ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
-    "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
+  "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 
 Set-Acl $newDirectory $acl
 $ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
-    "IIS_IUSRS","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
+  "IIS_IUSRS","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl
