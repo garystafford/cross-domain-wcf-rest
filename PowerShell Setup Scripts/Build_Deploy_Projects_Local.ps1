@@ -11,10 +11,10 @@
 cd "$env:GIT_REPOS\cross-domain-wcf-rest\Restaurant\RestaurantWcfService"
 msbuild RestaurantWcfService.csproj /p:DeployOnBuild=true `
 	/p:PublishProfile=LocalMachine /p:Configuration=Debug `
-	/verbosity:minimal /nologo /consoleloggerparameters:PerformanceSummary
+	/verbosity:minimal /nologo
 
 # Website
 cd "$env:GIT_REPOS\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite"
 msbuild website.publishproj /p:DeployOnBuild=true `
 	/p:PublishProfile=LocalMachine /p:Configuration=Debug `
-	/verbosity:minimal /nologo /consoleloggerparameters:PerformanceSummary
+	/verbosity:minimal /nologo

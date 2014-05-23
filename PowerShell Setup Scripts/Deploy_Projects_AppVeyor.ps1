@@ -9,11 +9,10 @@
 msbuild Restaurant\Restaurant.sln `
 	/p:DeployOnBuild=true /p:PublishProfile=AzureVM /p:Configuration=AppVeyor `
 	/p:AllowUntrustedCertificate=true /p:Password=$env:AZURE_VM_PASSWORD `
-	/verbosity:minimal /nologo /consoleloggerparameters:PerformanceSummary
+	/verbosity:minimal /nologo
 
 # Deploy website
 msbuild Restaurant\RestaurantDemoSite\website.publishproj `
 	/p:DeployOnBuild=true /p:PublishProfile=AzureVM /p:Configuration=Release `
 	/p:AllowUntrustedCertificate=true /p:Password=$env:AZURE_VM_PASSWORD `
-	/verbosity:minimal /nologo /consoleloggerparameters:PerformanceSummary
-	
+	/verbosity:minimal /nologo
