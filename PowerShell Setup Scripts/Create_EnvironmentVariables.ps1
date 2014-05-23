@@ -7,8 +7,8 @@
 
 # http://technet.microsoft.com/en-us/library/ff730964.aspx
 
-[Environment]::SetEnvironmentVariable("AZURE_VM_HOSTNAME", "gstafford.cloudapp.net", "User")
-[Environment]::SetEnvironmentVariable("AZURE_VM_USERNAME", "MSDepSvcUser", "User")
-[Environment]::SetEnvironmentVariable("AZURE_VM_PASSWORD", "WebDeploy123", "User")
+[Environment]::SetEnvironmentVariable("AZURE_VM_HOSTNAME", "{YOUR HOSTNAME HERE}", "User")
+[Environment]::SetEnvironmentVariable("AZURE_VM_USERNAME", "{YOUR USERNME HERE}", "User")
+[Environment]::SetEnvironmentVariable("AZURE_VM_PASSWORD", "{YOUR PASSWORD HERE}", "User")
 
 Get-ChildItem Env: | Where name -Like "AZURE_VM_*"
