@@ -7,6 +7,7 @@
 
 # http://technet.microsoft.com/en-us/library/ff730964.aspx
 
+# Create environment variables
 [Environment]::SetEnvironmentVariable("AZURE_VM_HOSTNAME", "{YOUR HOSTNAME HERE}", "User")
 [Environment]::SetEnvironmentVariable("AZURE_VM_USERNAME", "{YOUR USERNME HERE}", "User")
 [Environment]::SetEnvironmentVariable("AZURE_VM_PASSWORD", "{YOUR PASSWORD HERE}", "User")
