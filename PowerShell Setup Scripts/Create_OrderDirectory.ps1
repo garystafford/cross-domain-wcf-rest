@@ -12,7 +12,7 @@ if (-not (Test-Path $newDirectory)){
 }
 
 $acl = Get-Acl $newDirectory
-$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
+$ar = New-Object System.Security.AccessControl.FileSystemAccessRule( `
   "INTERACTIVE","Modify","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl

@@ -5,7 +5,7 @@
 ###############################################################
 
 # Change and set GIT_REPOS environment variable first
-# [Environment]::SetEnvironmentVariable("GIT_REPOS", "path\to\my\local\git\repos", "Machine")
+# [Environment]::SetEnvironmentVariable("GIT_REPOS", "{path\to\git\repos}", "Machine")
 
 # WCF Service
 cd "$env:GIT_REPOS\cross-domain-wcf-rest\Restaurant\RestaurantWcfService"

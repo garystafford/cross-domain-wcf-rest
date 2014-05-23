@@ -23,7 +23,7 @@ if (-not (Test-Path $newDirectory)){
 }
 
 $acl = Get-Acl $newDirectory
-$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
+$ar = New-Object System.Security.AccessControl.FileSystemAccessRule( `
   "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl
@@ -37,12 +37,12 @@ if (-not (Test-Path $newDirectory)){
 }
 
 $acl = Get-Acl $newDirectory
-$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
+$ar = New-Object System.Security.AccessControl.FileSystemAccessRule( `
   "IUSR","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 
 Set-Acl $newDirectory $acl
-$ar = New-Object System.Security.AccessControl.FileSystemAccessRule(
+$ar = New-Object System.Security.AccessControl.FileSystemAccessRule( `
   "IIS_IUSRS","ReadAndExecute","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl
