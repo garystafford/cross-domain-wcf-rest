@@ -8,7 +8,7 @@ namespace RestaurantUnitTests
     public class RestaurantMenu
     {
         [TestMethod]
-        public void Test_RestaurantMenu_DefaultConstructor_HasMutlipleItems()
+        public void Test_RestaurantMenu_DefaultConstructor_ReturnsMutlipleMenuItems()
         {
             var restaurantMenu = new Restaurant.RestaurantMenu();
             Assert.IsTrue(restaurantMenu.Count > 1);
