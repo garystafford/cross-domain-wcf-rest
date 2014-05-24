@@ -8,7 +8,7 @@
 $newDirectory = "c:\RestaurantOrders"
 
 if (-not (Test-Path $newDirectory)){
-  New-Item -Type directory -Path $newDirectory
+  New-Item -Type directory -Path $newDirectory > null
 }
 
 $acl = Get-Acl $newDirectory
