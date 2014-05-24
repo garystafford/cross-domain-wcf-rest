@@ -9,6 +9,7 @@ $newDirectory = "c:\RestaurantOrders"
 
 if (-not (Test-Path $newDirectory)){
   New-Item -Type directory -Path $newDirectory > null
+  Write-Host "*** '$newDirectory' directory created."
 }
 
 $acl = Get-Acl $newDirectory
@@ -16,3 +17,4 @@ $ar = New-Object System.Security.AccessControl.FileSystemAccessRule( `
   "INTERACTIVE","Modify","ContainerInherit, ObjectInherit", "None", "Allow")
 $acl.SetAccessRule($ar)
 Set-Acl $newDirectory $acl
+

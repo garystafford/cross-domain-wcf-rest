@@ -12,3 +12,5 @@ msbuild Restaurant\Restaurant.sln `
 # Build website
 msbuild Restaurant\RestaurantDemoSite\website.publishproj `
   /p:Configuration=Release /verbosity:minimal /nologo
+
+Write-Host "*** Solution builds complete."
