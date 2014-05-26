@@ -2,9 +2,9 @@
 
 ### Cloud-based Continuous Integration and Delivery for .NET Development
 
-Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://programmaticponderings.wordpress.com/2011/09/25/consuming-cross-domain-wcf-rest-services-with-jquery-using-jsonp/)
+New Blog Post:[Cloud-based Continuous Integration and Deployment for .NET Development](http://wp.me/p1RD28-1aL)
 
-New Blog Post (In-progress): [Cloud-based Continuous Integration and Delivery for .NET Development](#)
+Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://wp.me/p1RD28-4)
 
 #### Installation and Configuration
 *  Clone GitHub Repository
