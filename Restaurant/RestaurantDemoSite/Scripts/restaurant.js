@@ -109,7 +109,9 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
           order_item_selected_price +
           "</td><td class='order_item_subtotal'>" +
           order_item_selected_subtotal +
-          "</td><td><input type='button' value='remove' class='btn btn-danger btn-sm'/></td>")
+          "</td><td class='remove_item'>" +
+          "<input type='button' value='remove' class='btn btn-danger btn-sm'/>" +
+          "</td>")
           .appendTo("#order_cart").hide();
 
         // Display grand total of order_item_selected_id

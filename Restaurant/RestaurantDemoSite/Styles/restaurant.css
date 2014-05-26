@@ -14,7 +14,7 @@ tbody td, tfoot th {
     text-align: left;
 }
 
-.order_item_id {
+.order_item_id, .remove_item {
     text-align: center;
 }
 
@@ -27,7 +27,7 @@ tbody td, tfoot th {
 }
 
 .vertical-spacer {
-    height: 25px;
+    height: 20px;
     width: 100%;
     vertical-align: middle;
     font-size: 0;
@@ -39,4 +39,8 @@ tbody td, tfoot th {
 
 .callout-danger {
     color: #ff0000;
+}
+
+header-space {
+    height: 15px;
 }
