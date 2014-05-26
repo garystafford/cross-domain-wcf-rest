@@ -17,16 +17,19 @@ New Blog Post (In-progress): [Cloud-based Continuous Integration and Delivery fo
   *  Run PS script: Create_OrderDirectory.ps1
   *  Run PS script: Create_WebDirectories.ps1
   *  Run PS script: Configure_IIS.ps1
-  *  Edit ```$gitRepositories``` variable value in Deploy_Projects_Local.ps1
+  *  Edit ```$gitRepositories``` variable value in Build_Deploy_Projects_Local.ps1
 *  Deploy Projects Locally
-  *  Run PS script: Deploy_Projects_Local.ps1
+  *  Run PS script: Build_Deploy_Projects_Local.ps1
 *  MSBuild
   *  Make sure you are calling VS2013's new MSBuild from command line. Use 'where msbuild' to confirm.
   *  MSBuild moved with VS2013. Seems to vary by machine. Do a file search...
-  *  If not setup, add path to PATH environment variable (i.e. 'C:\Program Files (x86)\MSBuild\12.0\Bin')
+  *  If not set-up, add path to PATH environment variable (i.e. 'C:\Program Files (x86)\MSBuild\12.0\Bin')
   *  Good post about VS2013 MSBuild: http://timrayburn.net/blog/visual-studio-2013-and-msbuild/
 
 #### Setting up AppVeyor
   *  Settings -> Environment -> Environment variables -> Add AZURE_VM_HOSTNAME, AZURE_VM_USERNAME, and AZURE_VM_PASSWORD
-  *  Settings -> Build -> Build Scipt -> PS -> . "PowerShell Setup Scripts\Deploy_Projects_AppVeyor.ps1"
-  *  Settings -> Test -> Before test script -> PS -> . "PowerShell Setup Scripts\Create_OrderDirectory.ps1"
+  *  Settings -> Build -> Build Script -> PS -> '. "PowerShell Setup Scripts\Build_Projects_AppVeyor.ps1"'
+  *  Settings -> Test -> Before test script -> PS -> '. "PowerShell Setup Scripts\Create_OrderDirectory.ps1"'
+  *  Settings -> Deployment -> Deployment Script -> PS -> '. "PowerShell Setup Scripts\Deploy_Projects_AppVeyor.ps1"'
+  *  Note the period (.) in above three PowerShell commands.
+
