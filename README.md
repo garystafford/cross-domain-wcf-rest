@@ -35,8 +35,8 @@ Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using J
 
 #### Previews
 <p>
-    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/Revised UI Viewed on Android Tablet.png?raw=true'><img src='https://github.com/garystafford/object-tracking-blogpost/blob/rev2014/images/Revised UI Viewed on Android Tablet.png?raw=true'></a>
+    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true'><img src='https://github.com/garystafford/object-tracking-blogpost/blob/rev2014/images/RevisedIU.PNG?raw=true'></a>
 </p>
 <p>
-    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/AppVeyor View of Last Build of Solution.PNG?raw=true'><img src='https://github.com/garystafford/object-tracking-blogpost/blob/rev2014/images/AppVeyor View of Last Build of Solution preview.PNG?raw=true'></a>
+    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/AppVeyorLastBuild.PNG?raw=true'><img src='https://github.com/garystafford/object-tracking-blogpost/blob/rev2014/images/AppVeyorLastBuild_preview.PNG?raw=true'></a>
 </p>
