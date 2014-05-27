@@ -1,4 +1,4 @@
-﻿///#source 1 1 C:\Users\gstaffor\Documents\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\jquery-2.1.0.js
+﻿///#source 1 1 C:\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\jquery-2.1.0.js
 /*!
  * jQuery JavaScript Library v2.1.0
  * http://jquery.com/
@@ -9111,7 +9111,7 @@ return jQuery;
 
 }));
 
-///#source 1 1 C:\Users\gstaffor\Documents\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\bootstrap.js
+///#source 1 1 C:\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\bootstrap.js
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -11064,7 +11064,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 
 }(jQuery);
 
-///#source 1 1 C:\Users\gstaffor\Documents\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\jquery.formatCurrency-1.4.0.js
+///#source 1 1 C:\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\jquery.formatCurrency-1.4.0.js
 //  This file is part of the jQuery formatCurrency Plugin.
 //
 //    The jQuery formatCurrency Plugin is free software: you can redistribute it
@@ -11309,7 +11309,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 	}
 
 })(jQuery);
-///#source 1 1 C:\Users\gstaffor\Documents\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\restaurant.js
+///#source 1 1 C:\git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite\Scripts\restaurant.js
 /*global $ */
 /*jslint browser: true, devel: true, plusplus: true, white: true */
 
