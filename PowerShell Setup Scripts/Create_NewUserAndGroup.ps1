@@ -17,16 +17,16 @@ $MSDepSvcUser.Put("Description","MSDepSvcUser Local Account")
 [int]$ADS_UF_DONT_EXPIRE_PASSWD  = 65536
 [int]$COMBINED_FLAG_VALUE = 65600
 
-$flag = $MSDepSvcUser.UserFlags.value -bor $COMBO_FLAGS
+$flag = $MSDepSvcUser.UserFlags.value -bor $COMBINED_FLAG_VALUE
 $MSDepSvcUser.put("userFlags",$flag)
 $MSDepSvcUser.SetInfo()
-Write-Host "*** User Created."
+Write-Host "*** New User Created."
 
 # Create new local group
 $MSDepSvcGroup=$server.Create("Group","MSDepSvcGroup")
 $MSDepSvcGroup.Put("Description","MSDepSvcGroup Local Group")
 $MSDepSvcGroup.SetInfo()
-Write-Host "*** Group Created."
+Write-Host "*** New Group Created."
 
 # Assign user to group
 [string]$serverPath = $server.Path
@@ -34,4 +34,4 @@ Write-Host "*** Group Created."
 [string]$groupName = $MSDepSvcGroup.Name
 $group = [ADSI]"$serverPath/$groupName,group"
 $group.Add("$serverPath/$userName,user")
-Write-Host "*** User assigned to Group."
+Write-Host "*** User Assigned to Group."
