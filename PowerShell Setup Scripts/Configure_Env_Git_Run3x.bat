@@ -22,6 +22,3 @@ setx GIT_SSL_NO_VERIFY        1
 
 # close and re-open the current command prompt to see changes
 exit
-
-# to see changes
-env | grep -e PASSWORD -e PROXY - VAGRANT | sort
