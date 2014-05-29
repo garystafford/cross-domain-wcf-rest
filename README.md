@@ -33,6 +33,14 @@ Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using J
   *  Settings -> Deployment -> Deployment Script -> PS -> '. "PowerShell Setup Scripts\Deploy_Projects_AppVeyor.ps1"'
   *  Note the period (.) in above PowerShell commands.
 
+#### Setting up Azure VM
+  *  Create new Web Deploy non-admin user and group, run 'powershell Create_NewUserAndGroup.ps1'
+  *  Configure both projects in IIS to allow web deployments from the above user.
+
+#### Optional - Setting Up Host Server Behind Proxy
+  *  If on network with proxy server, change the primary environment varibles in Configure_Env_Git_Run3x.bat.
+  *  Run Configure_Env_Git_Run3x.bat 3x's (because of nested variables). 
+
 #### Previews
 <p>
     <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true'><img src='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true'></a>
