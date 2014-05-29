@@ -4,7 +4,7 @@
 
 New Blog Post:[Cloud-based Continuous Integration and Deployment for .NET Development](http://wp.me/p1RD28-1aL)
 
-Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://wp.me/p1RD28-4)
+Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://wp.me/p1RD28-4)
 
 #### Local Installation and Configuration
 *  Clone GitHub Repository
@@ -34,11 +34,11 @@ Orginal Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using J
   *  Note the period (.) in above PowerShell commands.
 
 #### Setting up Azure VM
-  *  Create new Web Deploy non-admin user and group, run 'powershell Create_NewUserAndGroup.ps1'
+  *  Create new Web Deploy non-admin user and group, run 'powershell Create_WebDeploy_UserAndGroup.ps1'
   *  Configure both projects in IIS to allow web deployments from the above user.
 
 #### Optional - Setting Up Host Server Behind Proxy
-  *  If on network with proxy server, change the primary environment varibles in Configure_Env_Git_Run3x.bat.
+  *  If on network with proxy server, change the primary environment variables in Configure_Env_Git_Run3x.bat.
   *  Run Configure_Env_Git_Run3x.bat 3x's (because of nested variables). 
 
 #### Previews
