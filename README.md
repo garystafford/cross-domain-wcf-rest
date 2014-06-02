@@ -17,8 +17,8 @@ Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using 
   *  Run PS script: Create_OrderDirectory.ps1
   *  Run PS script: Create_WebDirectories.ps1
   *  Run PS script: Configure_IIS.ps1
-  *  Edit ```$gitRepositories``` variable value in Build_Deploy_Projects_Local.ps1
 *  Deploy Projects Locally
+  *  Change the ```$git_repos``` variable value in Build_Deploy_Projects_Local.ps1
   *  Run PS script: Build_Deploy_Projects_Local.ps1
 *  VS2013 MSBuild Path
   *  MSBuild moved with VS2013. Make sure you are calling VS2013's version of MSBuild from command line.
@@ -34,6 +34,7 @@ Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using 
   *  Note the period (.) in above PowerShell commands.
 
 #### Setting up Azure VM (locally on VM)
+  *  Change the variables in both scripts below, Create_WebDeploy_UserAndGroup.ps1 and Configure_WebDeployUserInIIS.ps1
   *  Create new Web Deploy non-admin user and group, run 'powershell Create_WebDeploy_UserAndGroup.ps1'
   *  Configure both projects in IIS to allow web deployments from the above user, run 'powershell Configure_WebDeployUserInIIS.ps1'
 
