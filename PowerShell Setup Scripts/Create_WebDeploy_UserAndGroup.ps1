@@ -1,24 +1,20 @@
 ########################################################################
 # Author: Gary A. Stafford
-# Revised: 2014-05-29
+# Revised: 2014-06-02
 # Create new local non-admin User and Group for Web Deploy
+# Reference - Flags: http://msdn.microsoft.com/en-us/library/aa772300%28v=vs.85%29.aspx
 ########################################################################
 
-# flags: http://msdn.microsoft.com/en-us/library/aa772300%28v=vs.85%29.aspx
-
-###################################################
-
+########################################################################
 # Main variables (Change these!)
-[string]$machineName = "MACHINE_NAME_HERE"    # WIN-WEB018
-[string]$userName    = "USER_NAME_HERE"       # mjones
-[string]$fullName    = "FULL USER NAME HERE"  # Mike Jones
-[string]$password    = "USER_PASSWORD_HERE"   # pa$$w0RD!
-[string]$groupName   = "GROUP_NAME_HERE"      # Development
-
-###################################################
+[string]$userName  = "USER_NAME_HERE"       # mjones
+[string]$fullName  = "FULL USER NAME HERE"  # Mike Jones
+[string]$password  = "USER_PASSWORD_HERE"   # pa$$w0RD!
+[string]$groupName = "GROUP_NAME_HERE"      # Development
+########################################################################
 
 # Create new local user account
-[ADSI]$server="WinNT://$machineName"
+[ADSI]$server="WinNT://$Env:COMPUTERNAME"
 $newUser = $server.Create("User", $userName)
 $newUser.SetPassword($password)
 
