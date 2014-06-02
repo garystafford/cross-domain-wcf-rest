@@ -7,15 +7,19 @@
 
 ########################################################################
 # Main variables (Change these!)
-[string]$userName       = "USER_NAME_HERE"  # mjones
-[string]$WcfServiceSite = "USER_NAME_HERE"  # MenuWcfRestService
-[string]$Website        = "USER_NAME_HERE"  # RestaurantDemoSite
+[string]$userName       = "USER_NAME_HERE"     # mjones
+[string]$WcfServiceSite = "SERVICE_SITE_HERE"  # MenuWcfRestService
+[string]$Website        = "WEBSITE_HERE"       # RestaurantDemoSite
 ########################################################################
 
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Management")
 
-# Below line allows you to create a user in IIS, but we already have a local Windows user created, so we don't need...
-# [Microsoft.Web.Management.Server.ManagementAuthentication]::CreateUser("MyUser", "ThePassword")
+# Below line allows you to create a user in IIS,
+# but we already have a local Windows user created, so we don't need...
+# [Microsoft.Web.Management.Server.ManagementAuthentication]::CreateUser(`
+#   "MyUser", "ThePassword")
 
-[Microsoft.Web.Management.Server.ManagementAuthorization]::Grant($userName, "$Env:COMPUTERNAME\$WcfServiceSite", $FALSE)
-[Microsoft.Web.Management.Server.ManagementAuthorization]::Grant($userName, "$Env:COMPUTERNAME\$Website", $FALSE)
+[Microsoft.Web.Management.Server.ManagementAuthorization]::Grant(`
+  $userName, "$Env:COMPUTERNAME\MenuWcfRestService", $FALSE)
+[Microsoft.Web.Management.Server.ManagementAuthorization]::Grant(`
+  $userName, "$Env:COMPUTERNAME\RestaurantDemoSite", $FALSE)
