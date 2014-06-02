@@ -10,16 +10,16 @@ Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using 
 *  Clone GitHub Repository
   *  Run command: ```git clone --branch=rev2014 https://github.com/garystafford/cross-domain-wcf-rest```
 *  Create Environment Variables
-  *  Edit (3) environment variables values Create_EnvironmentVariables.ps1 
-  *  Run PS script: Create_EnvironmentVariables.ps1
+  *  Change the (3) environment variables values in script Create_EnvironmentVariables.ps1.
+  *  Run PS script Create_EnvironmentVariables.ps1.
   *  NOTE: New environment variables won't show up in current shell. You must close and re-open the shell.
 *  Set-up Local Environment
-  *  Run PS script: Create_OrderDirectory.ps1
-  *  Run PS script: Create_WebDirectories.ps1
-  *  Run PS script: Configure_IIS.ps1
+  *  Run PS script Create_OrderDirectory.ps1.
+  *  Run PS script Create_WebDirectories.ps1.
+  *  Run PS script Configure_IIS.ps1.
 *  Deploy Projects Locally
-  *  Change the ```$git_repos``` variable value in Build_Deploy_Projects_Local.ps1
-  *  Run PS script: Build_Deploy_Projects_Local.ps1
+  *  Change the ```$git_repos``` variable value in script Build_Deploy_Projects_Local.ps1.
+  *  Run PS script Build_Deploy_Projects_Local.ps1.
 *  VS2013 MSBuild Path
   *  MSBuild moved with VS2013. Make sure you are calling VS2013's version of MSBuild from command line.
   *  Use 'where msbuild' from command line to confirm MSBuild's current location.
@@ -34,9 +34,9 @@ Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using 
   *  Note the period (.) in above PowerShell commands.
 
 #### Setting up Azure VM (locally on VM)
-  *  Change the variables in both scripts below, Create_WebDeploy_UserAndGroup.ps1 and Configure_WebDeployUserInIIS.ps1
-  *  Create new Web Deploy non-admin user and group, run 'powershell Create_WebDeploy_UserAndGroup.ps1'
-  *  Configure both projects in IIS to allow web deployments from the above user, run 'powershell Configure_WebDeployUserInIIS.ps1'
+  *  Change the variable values in scripts Create_WebDeploy_UserAndGroup.ps1 and Configure_WebDeployUserInIIS.ps1.
+  *  Create new Web Deploy non-admin user and group, run PS script Create_WebDeploy_UserAndGroup.ps1.
+  *  Configure both projects in IIS to allow web deployments from the above user, run PS script Configure_WebDeployUserInIIS.ps1.
 
 #### Optional - Setting Up Host Server Behind Proxy
   *  If on network with proxy server, change the primary environment variables in Configure_Env_Git_Run3x.bat.
