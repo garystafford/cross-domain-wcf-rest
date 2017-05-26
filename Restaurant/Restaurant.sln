@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantWcfService", "RestaurantWcfService\RestaurantWcfService.csproj", "{1FC1B08C-AD15-4795-B3F0-652DB2164393}"
 EndProject
@@ -12,7 +12,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestaurantDemoSite", "http://localhost:31061", "{909EFBB3-6AD4-4051-A053-6B20A876564D}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_31061"
 		Debug.AspNetCompiler.PhysicalPath = "RestaurantDemoSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_31061\"
