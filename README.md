@@ -31,7 +31,7 @@ Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using 
 *  Settings -> Environment -> Environment variables -> Add `AZURE_VM_HOSTNAME`, `AZURE_VM_USERNAME`, and `AZURE_VM_PASSWORD`
 *  Settings -> Build -> Build Script -> PS -> '. "PowerShell Setup Scripts\Build_Projects_AppVeyor.ps1"'
 *  Settings -> Test -> Before test script -> PS -> '. "PowerShell Setup Scripts\Create_OrderDirectory.ps1"'
-*  Settings -> Deployment -> Deployment Script -> PS -> '. "PowerShell Setup Scripts\Deploy_Projects_AppVeyor.ps1"'
+*  Settings -> Deployment -> Deployment Script -> PS -> '. "PowerShell Setup Scripts\Deploy_Projects_Azure_from_AppVeyor.ps1"'
 *  Note the period (.) in above PowerShell commands.
 
 ## Setting up Azure VM (locally on VM)

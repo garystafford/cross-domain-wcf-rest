@@ -8,19 +8,20 @@
 
 ########################################################################
 # Main variables (Change these!)
-[string]$git_repos = "C:\Users\gary.stafford\Source\Repos"  # C:\git_repos
+[string]$projectLocation = "C:\Users\gary.stafford\Source\Repos\cross-domain-wcf-rest\Restaurant"
 ########################################################################
 
 # WCF Service
-cd "$git_repos\cross-domain-wcf-rest\Restaurant\RestaurantWcfService"
-msbuild RestaurantWcfService.csproj /p:DeployOnBuild=true `
+msbuild "$projectLocation\RestaurantWcfService\RestaurantWcfService.csproj" `
+  /p:DeployOnBuild=true `
   /p:PublishProfile=LocalMachine /p:Configuration=Debug `
   /verbosity:minimal /nologo
 
 # Website
-cd "$git_repos\cross-domain-wcf-rest\Restaurant\RestaurantDemoSite"
-msbuild website.publishproj /p:DeployOnBuild=true `
+msbuild "$projectLocation\RestaurantDemoSite\website.publishproj" `
+  /p:DeployOnBuild=true `
   /p:PublishProfile=LocalMachine /p:Configuration=Debug `
   /verbosity:minimal /nologo
 
+# Pause script before closing to check output - only for manual execution!
 $host.enternestedprompt()

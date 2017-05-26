@@ -1,15 +1,15 @@
 ########################################################################
 # Author: Gary A. Stafford
-# Revised: 2014-06-02
+# Revised: 2017-05-26
 # Assign non-admin User in IIS for Web Deploy
 # Reference: http://blogs.msdn.com/b/carlosag/archive/2009/10/23/adding-iis-manager-users-and-permissions-through-powershell.aspx
 ########################################################################
 
 ########################################################################
 # Main variables (Change these!)
-[string]$userName       = "USER_NAME_HERE"     # mjones
-[string]$WcfServiceSite = "SERVICE_SITE_HERE"  # MenuWcfRestService
-[string]$Website        = "WEBSITE_HERE"       # RestaurantDemoSite
+[string]$userName       = "deployperson"        # mjones
+[string]$WcfServiceSite = "MenuWcfRestService"  # MenuWcfRestService
+[string]$Website        = "RestaurantDemoSite"  # RestaurantDemoSite
 ########################################################################
 
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Management")
@@ -20,6 +20,6 @@
 #   "MyUser", "ThePassword")
 
 [Microsoft.Web.Management.Server.ManagementAuthorization]::Grant(`
-  $userName, "$Env:COMPUTERNAME\MenuWcfRestService", $FALSE)
+  $userName, "$Env:COMPUTERNAME\$WcfServiceSite", $FALSE)
 [Microsoft.Web.Management.Server.ManagementAuthorization]::Grant(`
-  $userName, "$Env:COMPUTERNAME\RestaurantDemoSite", $FALSE)
+  $userName, "$Env:COMPUTERNAME\$Website", $FALSE)
