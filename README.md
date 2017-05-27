@@ -4,9 +4,9 @@
 
 _** NOTE: The below posts were written in May, 2014. The projects have been updated as of May, 2017 to the latest Microsoft .NET and NuGet package versions, on the `release-2.0` branch. **_
 
-Newer Blog Post: [Cloud-based Continuous Integration and Deployment for .NET Development](http://wp.me/p1RD28-1aL)
+Newer May, 2014 Blog Post: [Cloud-based Continuous Integration and Deployment for .NET Development](http://wp.me/p1RD28-1aL)
 
-Original Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://wp.me/p1RD28-4)
+Original 2011 Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery using JSONP](http://wp.me/p1RD28-4)
 
 ## Local Installation and Configuration
 *  Clone GitHub Repository
