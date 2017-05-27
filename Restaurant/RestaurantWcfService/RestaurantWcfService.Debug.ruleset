@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - cross-domain-wcf-rest Sonar way" ToolsVersion="15.0">
+  <Include Path="..\sonarqube\org.sonarqube_sonarqube-scanner-msbuild_1.0csharp.ruleset" Action="Default" />
+  <Include Path="basiccorrectnessrules.ruleset" Action="Default" />
+</RuleSet>

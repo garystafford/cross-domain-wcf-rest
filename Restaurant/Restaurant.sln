@@ -35,6 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		WebEssentials-Settings.json = WebEssentials-Settings.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarQube", "SonarQube", "{92672DD8-20E2-4DB4-81D1-BF7B740FBAD1}"
+	ProjectSection(SolutionItems) = preProject
+		SonarQube\org.sonarqube_sonarqube-scanner-msbuild_1.0CSharp.ruleset = SonarQube\org.sonarqube_sonarqube-scanner-msbuild_1.0CSharp.ruleset
+		SonarQube\SolutionBinding.sqconfig = SonarQube\SolutionBinding.sqconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppVeyor|Any CPU = AppVeyor|Any CPU

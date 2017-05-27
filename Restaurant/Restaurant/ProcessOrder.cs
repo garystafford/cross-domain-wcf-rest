@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -16,7 +17,7 @@ namespace Restaurant
             {
                 Console.WriteLine("Error: Empty message string...");
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(), orderId, 
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId, 
                     0, "Sorry, empty order received.");
             }
 
@@ -30,22 +31,22 @@ namespace Restaurant
                 WriteOrderToFile(restaurantOrder, orderId);
 
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(), 
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), 
                     orderId, order.Count(), "Thank you for your order!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(), orderId, 0, ex.Message);
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId, 0, ex.Message);
             }
         }
 
         private void NormalizeJsonString(ref string restaurantOrder)
         {
             restaurantOrder = Uri.UnescapeDataString(restaurantOrder);
-            int start = restaurantOrder.IndexOf("[");
-            int end = restaurantOrder.IndexOf("]") + 1;
+            int start = restaurantOrder.IndexOf("[", StringComparison.InvariantCulture);
+            int end = restaurantOrder.IndexOf("]", StringComparison.InvariantCulture) + 1;
             int length = end - start;
             restaurantOrder = restaurantOrder.Substring(start, length);
         }

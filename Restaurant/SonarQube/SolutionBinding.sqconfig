@@ -1,0 +1,10 @@
+{
+  "ServerUri": "http://localhost:9000",
+  "ProjectKey": "org.sonarqube:sonarqube-scanner-msbuild:1.0",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "cs-sonar-way-78159",
+      "ProfileTimestamp": "2017-05-25T20:39:54-04:00"
+    }
+  }
+}
