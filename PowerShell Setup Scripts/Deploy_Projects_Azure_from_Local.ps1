@@ -22,6 +22,6 @@ msbuild "$projectLocation\RestaurantDemoSite\website.publishproj" `
   /verbosity:minimal /nologo
 
 Write-Host "*** Solution deployments complete."
-
+	
 # Pause script before closing to check output - only for manual execution!
 $host.enternestedprompt()
