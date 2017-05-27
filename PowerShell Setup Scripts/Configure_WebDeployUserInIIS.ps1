@@ -7,7 +7,7 @@
 
 ########################################################################
 # Main variables (Change these!)
-[string]$userName       = "deployperson"        # mjones
+[string]$userName       = "DEPLOYMENT_USERNAME" # mjones
 [string]$WcfServiceSite = "MenuWcfRestService"  # MenuWcfRestService
 [string]$Website        = "RestaurantDemoSite"  # RestaurantDemoSite
 ########################################################################

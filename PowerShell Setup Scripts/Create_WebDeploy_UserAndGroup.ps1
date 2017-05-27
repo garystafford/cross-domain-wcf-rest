@@ -7,10 +7,10 @@
 
 ########################################################################
 # Main variables (Change these!)
-[string]$userName  = "deployperson"   # mjones
-[string]$fullName  = "Deploy Person"  # Mike Jones
-[string]$password  = "Deployer123!"   # pa$$w0RD!
-[string]$groupName = "Deployment"     # Development
+[string]$userName  = "DEPLOYMENT_USERNAME"   # mjones
+[string]$fullName  = "DEPLOYMENT_FULL_NAME"  # Mike Jones
+[string]$password  = "DEPLOYMENT_PASSWORD"   # pa$$w0RD!
+[string]$groupName = "DEPLOYMENT_GROUP"      # Development
 ########################################################################
 
 # Create new local user account
