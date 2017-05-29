@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantUnitTests", "Rest
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RestaurantDemoSite", "http://localhost:31061", "{909EFBB3-6AD4-4051-A053-6B20A876564D}"
 	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_31061"

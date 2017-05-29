@@ -3,20 +3,20 @@ using System.Runtime.Serialization;
 
 namespace Restaurant
 {
-    [DataContractAttribute]
+    [DataContract]
     public class OrderResponse
     {
-        public OrderResponse(String OrderTime, Guid OrderId, 
-            int ItemCount, String OrderMessage)
+        public OrderResponse(string orderTime, Guid orderId,
+            int itemCount, string orderMessage)
         {
-            this.OrderTime = OrderTime;
-            this.OrderId = OrderId;
-            this.ItemCount = ItemCount;
-            this.OrderMessage = OrderMessage;
+            OrderTime = orderTime;
+            OrderId = orderId;
+            ItemCount = itemCount;
+            OrderMessage = orderMessage;
         }
 
         [DataMember]
-        public String OrderTime { get; private set; }
+        public string OrderTime { get; private set; }
 
         [DataMember]
         public Guid OrderId { get; private set; }

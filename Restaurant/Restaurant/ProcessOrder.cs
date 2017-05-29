@@ -1,23 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using log4net;
+using Newtonsoft.Json;
 
 namespace Restaurant
 {
     public class ProcessOrder
     {
-        public const string STR_JsonFilePath = @"c:\RestaurantOrders\";
-        public OrderResponse ProcessOrderJSON(string restaurantOrder)
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
+
+        public const string StrJsonFilePath = @"c:\RestaurantOrders\";
+
+        public OrderResponse ProcessOrderJson(string restaurantOrder)
         {
-            var orderId = Guid.NewGuid(); 
-            
+            var orderId = Guid.NewGuid();
+
             if (restaurantOrder.Length < 1)
             {
-                Console.WriteLine("Error: Empty message string...");
+                Log.Info("Error: Empty message string...");
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId, 
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId,
                     0, "Sorry, empty order received.");
             }
 
@@ -31,30 +35,30 @@ namespace Restaurant
                 WriteOrderToFile(restaurantOrder, orderId);
 
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), 
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
                     orderId, order.Count(), "Thank you for your order!");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Log.Info("Error: " + ex.Message);
                 return new OrderResponse(
                     DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId, 0, ex.Message);
             }
         }
 
-        private void NormalizeJsonString(ref string restaurantOrder)
+        private static void NormalizeJsonString(ref string restaurantOrder)
         {
             restaurantOrder = Uri.UnescapeDataString(restaurantOrder);
-            int start = restaurantOrder.IndexOf("[", StringComparison.InvariantCulture);
-            int end = restaurantOrder.IndexOf("]", StringComparison.InvariantCulture) + 1;
-            int length = end - start;
+            var start = restaurantOrder.IndexOf("[", StringComparison.InvariantCulture);
+            var end = restaurantOrder.IndexOf("]", StringComparison.InvariantCulture) + 1;
+            var length = end - start;
             restaurantOrder = restaurantOrder.Substring(start, length);
         }
 
-        private void WriteOrderToFile(string restaurantOrder, Guid OrderId)
+        private static void WriteOrderToFile(string restaurantOrder, Guid orderId)
         {
             //Make sure to add permissions for IUSR to folder path
-            var fileName = String.Format("{0}{1}.txt", STR_JsonFilePath, OrderId);
+            var fileName = $"{StrJsonFilePath}{orderId}.txt";
 
             using (TextWriter writer = new StreamWriter(fileName))
             {

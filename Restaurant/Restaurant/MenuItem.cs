@@ -1,5 +1,4 @@
-﻿
-namespace Restaurant
+﻿namespace Restaurant
 {
     public class MenuItem
     {
@@ -7,11 +6,11 @@ namespace Restaurant
         {
         }
 
-        public MenuItem(int Id, string Description, double Price)
+        public MenuItem(int id, string description, double price)
         {
-            this.Id = Id;
-            this.Description = Description;
-            this.Price = Price;
+            Id = id;
+            Description = description;
+            Price = price;
         }
 
         public int Id { get; set; }

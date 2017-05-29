@@ -1,22 +1,23 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Restaurant;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using log4net;
 
 namespace RestaurantUnitTests
 {
     [TestClass]
     public class ProcessOrder
     {
-        private Restaurant.ProcessOrder processOrder = new Restaurant.ProcessOrder();
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
+
+        private readonly Restaurant.ProcessOrder _processOrder = new Restaurant.ProcessOrder();
 
         [TestMethod]
         public void Test_JsonFilePath_Exists()
         {
-            String jsonFilePath = Restaurant.ProcessOrder.STR_JsonFilePath;
-            Console.WriteLine("Restaurant.ProcessOrder.STR_JsonFilePath: " + jsonFilePath);
+            var jsonFilePath = Restaurant.ProcessOrder.StrJsonFilePath;
+            Log.Info("Restaurant.ProcessOrder.STR_JsonFilePath: " + jsonFilePath);
 
-            bool jsonFilePathExists = Directory.Exists(jsonFilePath);
+            var jsonFilePathExists = Directory.Exists(jsonFilePath);
 
             Assert.IsTrue(jsonFilePathExists);
         }
@@ -24,15 +25,15 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_JsonFilePath_FileCountIncreasesByOne()
         {
-            String jsonFilePath = Restaurant.ProcessOrder.STR_JsonFilePath;
+            const string jsonFilePath = Restaurant.ProcessOrder.StrJsonFilePath;
             
-            int jsonFilePathFileCountBefore =
+            var jsonFilePathFileCountBefore =
                 Directory.GetFiles(jsonFilePath).GetLength(0);
 
-            String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
+            const string restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
 
-            processOrder.ProcessOrderJSON(restaurantOrder);
-            int jsonFilePathFileCountAfter =
+            _processOrder.ProcessOrderJson(restaurantOrder);
+            var jsonFilePathFileCountAfter =
                 Directory.GetFiles(jsonFilePath).GetLength(0);
 
             Assert.AreEqual(jsonFilePathFileCountBefore + 1, jsonFilePathFileCountAfter);
@@ -41,29 +42,29 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_ProcessOrderJSON_EmptyOrder_ReturnsExpectedMessage()
         {
-            Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(String.Empty);
+            var orderResponse = _processOrder.ProcessOrderJson(string.Empty);
             Assert.AreEqual(orderResponse.OrderMessage, "Sorry, empty order received.");
         }
 
         [TestMethod]
         public void Test_ProcessOrderJSON_BadJson_ThrowsException()
         {
-            Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON("This is not good JSON!");
+            var orderResponse = _processOrder.ProcessOrderJson("This is not good JSON!");
             Assert.IsTrue(orderResponse.OrderMessage.Contains("StartIndex cannot be less than zero."));
         }
 
         [TestMethod]
         public void Test_ProcessOrderJSON_NewOrder_ReturnValueIsNotNull()
         {
-            String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
-            Assert.IsNotNull(processOrder.ProcessOrderJSON(restaurantOrder));
+            const string restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
+            Assert.IsNotNull(_processOrder.ProcessOrderJson(restaurantOrder));
         }
 
         [TestMethod]
         public void Test_ProcessOrderJSON_NewOrder_ReturnsExpectedMessage()
         {
-            String restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
-            Restaurant.OrderResponse orderResponse = processOrder.ProcessOrderJSON(restaurantOrder);
+            const string restaurantOrder = "{'restaurantOrder':[{'Quantity':'1','Id':'4'}]}";
+            var orderResponse = _processOrder.ProcessOrderJson(restaurantOrder);
             Assert.AreEqual(orderResponse.OrderMessage, "Thank you for your order!");
         }
     }

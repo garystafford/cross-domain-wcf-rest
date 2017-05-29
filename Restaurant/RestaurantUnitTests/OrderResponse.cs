@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Restaurant;
 
 namespace RestaurantUnitTests
 {
@@ -11,7 +11,7 @@ namespace RestaurantUnitTests
         public void Test_OrderResponse_AddOrderViaConstructor_ItemCountEqualsOne()
         {
             var orderResponse = new Restaurant.OrderResponse(
-                DateTime.Now.ToLocalTime().ToString(),
+                DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
                 Guid.NewGuid(), 1, "Test Message");
             Assert.AreEqual(orderResponse.ItemCount, 1);
         }

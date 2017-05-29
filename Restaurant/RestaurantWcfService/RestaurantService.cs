@@ -29,7 +29,7 @@ namespace RestaurantWcfService
             //passes JSON-format order string to ProcessOrderJSON method
             var orderProcessor = new ProcessOrder();
             var orderResponse =
-                orderProcessor.ProcessOrderJSON(restaurantOrder);
+                orderProcessor.ProcessOrderJson(restaurantOrder);
 
             return orderResponse;
         }

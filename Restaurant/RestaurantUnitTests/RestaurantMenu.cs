@@ -17,9 +17,8 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_RestaurantMenu_AddOneItem_ItemCountEqualsOne()
         {
-            var menuItem = new Restaurant.MenuItem(99, "Test Item", 9.99);
-            var menuList = new Collection<MenuItem>();
-            menuList.Add(menuItem);
+            var menuItem = new MenuItem(99, "Test Item", 9.99);
+            var menuList = new Collection<MenuItem> {menuItem};
             var restaurantMenu = new Restaurant.RestaurantMenu(menuList);
             Assert.AreEqual(restaurantMenu.Count, 1);
         }
