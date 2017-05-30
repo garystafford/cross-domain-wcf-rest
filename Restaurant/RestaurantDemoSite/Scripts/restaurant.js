@@ -1,10 +1,21 @@
 /*global $ */
 /*jslint browser: true, devel: true, plusplus: true, white: true */
 
-var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
-  formatRowColor, formatRowCurrency, getRestaurantMenu, handleOrder,
-  orderTotal, populateDropdown, tableToJson, sendOrder, serviceUrl,
-  serviceHost, servicePort;
+var addMenuItemToOrder,
+    calculateSubtotal,
+    clearForm,
+    clickRemove,
+    formatRowColor,
+    formatRowCurrency,
+    getRestaurantMenu,
+    handleOrder,
+    orderTotal,
+    populateDropdown,
+    tableToJson,
+    sendOrder,
+    serviceUrl,
+    serviceHost,
+    servicePort;
 
 (function () {
     "use strict";
@@ -58,25 +69,28 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         price = this.Price;
         description = this.Description;
         $("#select_item")
-          .append($("<option></option>")
-            .val(id)
-            .html(description)
-            .attr("title", price));
+            .append($("<option></option>")
+                .val(id)
+                .html(description)
+                .attr("title", price));
     };
 
     // Add selected menu item to order table
     addMenuItemToOrder = function () {
-        var order_item_selected_quantity, selected_item,
-          order_item_selected_id, order_item_selected_description,
-          order_item_selected_price, order_item_selected_subtotal;
+        var orderItemSelectedQuantity,
+            selectedItem,
+            orderItemSelectedId,
+            orderItemSelectedDescription,
+            orderItemSelectedPrice,
+            orderItemSelectedSubtotal;
 
         // Limit order quantity to between 1-99
-        order_item_selected_quantity =
-          parseInt($("#select_quantity").val(), 10);
+        orderItemSelectedQuantity =
+            parseInt($("#select_quantity").val(), 10);
 
-        if (order_item_selected_quantity < 1 ||
-          order_item_selected_quantity > 99 ||
-          isNaN(order_item_selected_quantity)) {
+        if (orderItemSelectedQuantity < 1 ||
+            orderItemSelectedQuantity > 99 ||
+            isNaN(orderItemSelectedQuantity)) {
             $("#select_quantity").focus();
             return;
         }
@@ -88,37 +102,38 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
         }
 
         // Get values
-        selected_item = $("#select_item option:selected");
-        order_item_selected_id = parseInt(selected_item.val(), 10);
-        order_item_selected_description = selected_item.text();
-        order_item_selected_price = parseFloat(selected_item.attr("title"));
+        selectedItem = $("#select_item option:selected");
+        orderItemSelectedId = parseInt(selectedItem.val(), 10);
+        orderItemSelectedDescription = selectedItem.text();
+        orderItemSelectedPrice = parseFloat(selectedItem.attr("title"));
 
         // Calculate subtotal
-        order_item_selected_subtotal =
-          calculateSubtotal(order_item_selected_price,
-            order_item_selected_quantity);
+        orderItemSelectedSubtotal =
+            calculateSubtotal(orderItemSelectedPrice,
+                orderItemSelectedQuantity);
 
         // Write out menu selection to table row
         $("<tr class='order_row'></tr>").html("<td>" +
-          order_item_selected_quantity +
-          "</td><td class='order_item_id hidden'>" +
-          order_item_selected_id +
-          "</td><td class='order_item_name'>" +
-          order_item_selected_description +
-          "</td><td class='order_item_price'>" +
-          order_item_selected_price +
-          "</td><td class='order_item_subtotal'>" +
-          order_item_selected_subtotal +
-          "</td><td class='remove_item'>" +
-          "<button class='btn btn-danger btn-xs'>" +
-          "<span class='glyphicon glyphicon-remove'></span></button></td>")
-          .appendTo("#order_cart").hide();
+            orderItemSelectedQuantity +
+            "</td><td class='order_item_id hidden'>" +
+            orderItemSelectedId +
+            "</td><td class='order_item_name'>" +
+            orderItemSelectedDescription +
+            "</td><td class='order_item_price'>" +
+            orderItemSelectedPrice +
+            "</td><td class='order_item_subtotal'>" +
+            orderItemSelectedSubtotal +
+            "</td><td class='remove_item'>" +
+            "<button class='btn btn-danger btn-xs'>" +
+            "<span class='glyphicon glyphicon-remove'></span></button></td>")
+            .appendTo("#order_cart").hide();
 
         // Display grand total of order_item_selected_id
-        $("#order_cart tr.order_row:last").fadeIn("medium", function () {
-            // Callback once animation is complete
-            orderTotal();
-        });
+        $("#order_cart tr.order_row:last").fadeIn("medium",
+            function () {
+                // Callback once animation is complete
+                orderTotal();
+            });
 
         formatRowCurrency();
         formatRowColor();
@@ -146,32 +161,34 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
     // Bind a click event to the correct remove button
     clickRemove = function () {
         $("#order_cart tr.order_row:last input").click(function () {
-            $(this).parent().parent().children().fadeOut("fast", function () {
-                $(this).parent().slideUp("slow", function () { // the row (tr)
-                    $(this).remove(); // the row (tr)
-                    orderTotal();
+            $(this).parent().parent().children().fadeOut("fast",
+                function () {
+                    $(this).parent().slideUp("slow",
+                        function () { // the row (tr)
+                            $(this).remove(); // the row (tr)
+                            orderTotal();
+                        });
                 });
-            });
         });
     };
 
     // Clear order input form and re-focus cursor
     clearForm = function () {
         $("#select_quantity").val("");
-        $("#select_item option:first-child").attr("selected", "selected");
+        $("#select_item").val("Select an Item...");
         $("#select_quantity").focus();
     };
 
     // Calculate new order total
     orderTotal = function () {
-        var order_total = 0;
+        var orderTotal = 0;
 
         $("#order_cart td.order_item_subtotal").each(function () {
             var amount = ($(this).html()).replace("$", "");
-            order_total += parseFloat(amount);
+            orderTotal += parseFloat(amount);
         });
 
-        $("#order_total").text(order_total).formatCurrency();
+        $("#order_total").text(orderTotal).formatCurrency();
     };
 
     // Call functions to prepare order and send to WCF service
@@ -231,9 +248,14 @@ var addMenuItemToOrder, calculateSubtotal, clearForm, clickRemove,
             success: function (confirmation) {
                 $("#orderResponse").html(
                     "<p class='h4'>Confirmation</p>" +
-                    "Time: " + confirmation.OrderTime + "<br />" +
-                    "Order Id: " + confirmation.OrderId + "<br />" +
-                    "Message: " + confirmation.OrderMessage
+                    "Time: " +
+                    confirmation.OrderTime +
+                    "<br />" +
+                    "Order Id: " +
+                    confirmation.OrderId +
+                    "<br />" +
+                    "Message: " +
+                    confirmation.OrderMessage
                 );
             }
         });
