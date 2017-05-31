@@ -22,7 +22,8 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <SourceWebProject>http://localhost:31061</SourceWebProject>
     <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/2/ROOT</SourceWebMetabasePath>
-  </PropertyGroup>
+	<PublishChromeDriver>true</PublishChromeDriver>
+</PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
     <!-- for VS2010 we need to use 10.5 but for VS2012+ we should use VisualStudioVersion -->
