@@ -9,7 +9,7 @@ namespace RestaurantUnitTests
     [TestClass]
     public class SeleniumTests : IDisposable
     {
-        private readonly IWebDriver _webDriver = new ChromeDriver();
+        private readonly IWebDriver _webDriver = new ChromeDriver("C:\\chromedriver_win32\\");
         private static readonly string RestaurantSite = Properties.Settings.Default.SiteUrl;
 
         [TestMethod]
