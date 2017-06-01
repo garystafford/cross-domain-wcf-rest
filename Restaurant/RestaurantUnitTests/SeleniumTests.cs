@@ -9,7 +9,8 @@ namespace RestaurantUnitTests
     [TestClass]
     public class SeleniumTests : IDisposable
     {
-        private readonly IWebDriver _webDriver = new ChromeDriver("C:\\chromedriver_win32\\");
+        //private readonly IWebDriver _webDriver = new ChromeDriver("C:\\chromedriver_win32\\");
+        private readonly IWebDriver _webDriver = new ChromeDriver();
         private static readonly string RestaurantSite = Properties.Settings.Default.SiteUrl;
 
         [TestMethod]
@@ -104,6 +105,7 @@ namespace RestaurantUnitTests
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("add_btn"));
             webElement.Click();
+            WaitForAjax();
             webElement = _webDriver.FindElement(By.Id("select_quantity"));
             var actualQuantity = webElement.Text;
             Assert.AreEqual(expectedQuantityValueLength, actualQuantity.Length);
@@ -119,6 +121,7 @@ namespace RestaurantUnitTests
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("add_btn"));
             webElement.Click();
+            WaitForAjax();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[1]"));
             Assert.IsTrue(webElement.Selected);
         }
@@ -155,6 +158,7 @@ namespace RestaurantUnitTests
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("order_btn"));
             webElement.Click();
+            WaitForAjax();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"orderResponse\"]"));
             var actualMessage = webElement.Text;
             Assert.IsTrue(actualMessage.Contains(expectedMessage));

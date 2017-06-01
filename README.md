@@ -2,7 +2,7 @@
 
 # Cloud-based Continuous Integration and Delivery for .NET Development
 
-_** NOTE: The below posts were written in May, 2014. The projects have been updated as of May, 2017 to the latest Microsoft .NET and NuGet package versions, on the `release-2.0` branch. **_
+_NOTE: The below posts were written in May, 2014. The projects have been updated as of May, 2017 to the latest Microsoft .NET and NuGet package versions, on the `release-2.0` branch._
 
 Newer May, 2014 Blog Post: [Cloud-based Continuous Integration and Deployment for .NET Development](http://wp.me/p1RD28-1aL)
 
@@ -47,12 +47,6 @@ Original 2011 Blog Post: [Consuming Cross-Domain WCF REST Services with jQuery u
 *  Run `Configure_Env_Git_Run3x.bat` 3x's (why? because of nested variables...). 
 
 ## Previews
-<p>
-    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/VS2013ViewSolution.PNG?raw=true'><img src='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/VS2013ViewSolution_preview.PNG?raw=true'></a>
-</p>
-<p>
-    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/AppVeyorLastBuild.PNG?raw=true'><img src='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/AppVeyorLastBuild_preview.PNG?raw=true'></a>
-</p>
-<p>
-    <a href='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true'><img src='https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true'></a>
-</p>
+![Image1](https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/VS2013ViewSolution.PNG?raw=true)
+![Image2](https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/AppVeyorLastBuild.PNG?raw=true')
+![Image3](https://github.com/garystafford/cross-domain-wcf-rest/blob/rev2014/images/RevisedIU.PNG?raw=true')
