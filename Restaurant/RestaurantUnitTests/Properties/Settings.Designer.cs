@@ -31,5 +31,14 @@ namespace RestaurantUnitTests.Properties {
                 return ((string)(this["SiteUrl"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\chromedriver_win32")]
+        public string CromeDriverLocation {
+            get {
+                return ((string)(this["CromeDriverLocation"]));
+            }
+        }
     }
 }
