@@ -13,13 +13,20 @@ namespace RestaurantUnitTests
         //private readonly IWebDriver _webDriver = new ChromeDriver();
         private static readonly string RestaurantSite = Settings.Default.SiteUrl;
 
-        private readonly IWebDriver _webDriver = new ChromeDriver(Settings.Default.CromeDriverLocation);
+        private IWebDriver _webDriver;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            _webDriver = new ChromeDriver(Settings.Default.CromeDriverLocation);
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            _webDriver.Navigate().GoToUrl(RestaurantSite);
+        }
 
         [TestMethod]
         public void Test_PageTitle_IsExpectedString()
         {
             const string expectedPageTitle = "Restaurant Menu Order Demo - Production Version";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var actualPageTitle = _webDriver.Title;
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
         }
@@ -28,7 +35,6 @@ namespace RestaurantUnitTests
         public void Test_OnPageTitle_IsExpectedString()
         {
             const string expectedOnPageTitle = "The .NET Diner";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var actualOnPageTitle = _webDriver.FindElement(By.ClassName("h3"));
             Assert.AreEqual(expectedOnPageTitle, actualOnPageTitle.Text);
         }
@@ -37,7 +43,6 @@ namespace RestaurantUnitTests
         public void Test_MenuItemsCount_IsExpectedInteger()
         {
             const int expectedMenuItemsCount = 11;
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_item"));
             var actualMenuItems = webElement.FindElements(By.TagName("option"));
             Assert.AreEqual(expectedMenuItemsCount, actualMenuItems.Count);
@@ -47,7 +52,6 @@ namespace RestaurantUnitTests
         public void Test_ClickAddButtonWithNoItem_AddsNoItemsToOrder()
         {
             const int expectedOrderRowCount = 0;
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("add_btn"));
             webElement.Click();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"order_cart\"]/tbody"));
@@ -59,7 +63,6 @@ namespace RestaurantUnitTests
         public void Test_ClickOrderButtonWithNoItems_DisplaysError()
         {
             const string expectedMessageTitle = "Error";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("order_btn"));
             webElement.Click();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"orderResponse\"]/p"));
@@ -72,7 +75,6 @@ namespace RestaurantUnitTests
         public void Test_ClickOrderButtonWithNoItems_DisplaysExpectedMessage()
         {
             const string expectedMessage = "Your order is empty.";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("order_btn"));
             webElement.Click();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"orderResponse\"]"));
@@ -84,7 +86,6 @@ namespace RestaurantUnitTests
         public void Test_AddOneItemToOrder_AddsOneItemToOrder()
         {
             const int expectedRowCount = 1;
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
@@ -100,14 +101,12 @@ namespace RestaurantUnitTests
         public void Test_AddItemToOrder_ClearsSelectedQuantity()
         {
             const int expectedQuantityValueLength = 0;
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("add_btn"));
             webElement.Click();
-            WaitForAjax();
             webElement = _webDriver.FindElement(By.Id("select_quantity"));
             var actualQuantity = webElement.Text;
             Assert.AreEqual(expectedQuantityValueLength, actualQuantity.Length);
@@ -116,14 +115,12 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_AddItemToOrder_ClearsSelectedMenuItem()
         {
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("add_btn"));
             webElement.Click();
-            WaitForAjax();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[1]"));
             Assert.IsTrue(webElement.Selected);
         }
@@ -132,7 +129,6 @@ namespace RestaurantUnitTests
         public void Test_ClickOrderButtonWithOneItem_DisplaysConfirmation()
         {
             const string expectedMessageTitle = "Confirmation";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
@@ -141,7 +137,6 @@ namespace RestaurantUnitTests
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("order_btn"));
             webElement.Click();
-            WaitForAjax();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"orderResponse\"]/p"));
             var actualMessageTitle = webElement.Text;
             Assert.AreEqual(expectedMessageTitle, actualMessageTitle);
@@ -151,7 +146,6 @@ namespace RestaurantUnitTests
         public void Test_ClickOrderButtonWithOneItem_DisplaysExpectedMessage()
         {
             const string expectedMessage = "Message: Thank you for your order!";
-            _webDriver.Navigate().GoToUrl(RestaurantSite);
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
@@ -160,35 +154,9 @@ namespace RestaurantUnitTests
             webElement.Click();
             webElement = _webDriver.FindElement(By.Id("order_btn"));
             webElement.Click();
-            WaitForAjax();
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"orderResponse\"]"));
             var actualMessage = webElement.Text;
             Assert.IsTrue(actualMessage.Contains(expectedMessage));
-        }
-
-        /// <summary>
-        ///     Only used to debug tests
-        /// </summary>
-        /// <param name="msToPause"></param>
-        private static void PauseBrowser(int msToPause = 5000)
-        {
-            Thread.Sleep(msToPause);
-        }
-
-        /// <summary>
-        ///     Reference: https://stackoverflow.com/a/7203819/580268
-        /// </summary>
-        public void WaitForAjax()
-        {
-            while (true) // Handle timeout somewhere
-            {
-                var javaScriptExecutor = _webDriver as IJavaScriptExecutor;
-                var ajaxIsComplete = javaScriptExecutor != null &&
-                                     (bool) javaScriptExecutor.ExecuteScript("return jQuery.active == 0");
-                if (ajaxIsComplete)
-                    break;
-                Thread.Sleep(100);
-            }
         }
 
         public void Dispose()
