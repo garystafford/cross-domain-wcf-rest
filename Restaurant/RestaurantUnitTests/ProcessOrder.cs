@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+﻿using System.IO;
 using log4net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RestaurantUnitTests
 {
@@ -26,7 +26,7 @@ namespace RestaurantUnitTests
         public void Test_JsonFilePath_FileCountIncreasesByOne()
         {
             const string jsonFilePath = Restaurant.ProcessOrder.StrJsonFilePath;
-            
+
             var jsonFilePathFileCountBefore =
                 Directory.GetFiles(jsonFilePath).GetLength(0);
 

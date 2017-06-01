@@ -3,15 +3,17 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using RestaurantUnitTests.Properties;
 
 namespace RestaurantUnitTests
 {
     [TestClass]
     public class SeleniumTests : IDisposable
     {
-        private readonly IWebDriver _webDriver = new ChromeDriver(Properties.Settings.Default.CromeDriverLocation);
         //private readonly IWebDriver _webDriver = new ChromeDriver();
-        private static readonly string RestaurantSite = Properties.Settings.Default.SiteUrl;
+        private static readonly string RestaurantSite = Settings.Default.SiteUrl;
+
+        private readonly IWebDriver _webDriver = new ChromeDriver(Settings.Default.CromeDriverLocation);
 
         [TestMethod]
         public void Test_PageTitle_IsExpectedString()
@@ -165,7 +167,7 @@ namespace RestaurantUnitTests
         }
 
         /// <summary>
-        /// Only used to debug tests
+        ///     Only used to debug tests
         /// </summary>
         /// <param name="msToPause"></param>
         private static void PauseBrowser(int msToPause = 5000)
@@ -174,51 +176,24 @@ namespace RestaurantUnitTests
         }
 
         /// <summary>
-        /// Reference: https://stackoverflow.com/a/7203819/580268
+        ///     Reference: https://stackoverflow.com/a/7203819/580268
         /// </summary>
         public void WaitForAjax()
         {
             while (true) // Handle timeout somewhere
             {
                 var javaScriptExecutor = _webDriver as IJavaScriptExecutor;
-                var ajaxIsComplete = javaScriptExecutor != null && (bool)javaScriptExecutor.ExecuteScript("return jQuery.active == 0");
+                var ajaxIsComplete = javaScriptExecutor != null &&
+                                     (bool) javaScriptExecutor.ExecuteScript("return jQuery.active == 0");
                 if (ajaxIsComplete)
                     break;
                 Thread.Sleep(100);
             }
         }
 
-        #region IDisposable Support
-
-        private bool _disposedValue; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposedValue) return;
-            if (disposing)
-                _webDriver.Dispose();
-
-            // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-            // TODO: set large fields to null.
-
-            _disposedValue = true;
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~SeleniumTests() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
+            _webDriver?.Dispose();
         }
-
-        #endregion
     }
 }
