@@ -103,6 +103,9 @@
     <None Include="Properties\PublishProfiles\TestingVM.pubxml" />
     <Content Include="RestaurantWcfService.Debug.ruleset" />
     <Content Include="RestaurantWcfService.ruleset" />
+    <None Include="Web.AppVeyor.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
