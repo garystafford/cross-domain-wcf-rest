@@ -1,4 +1,6 @@
-﻿namespace Restaurant
+﻿using MongoDB.Bson;
+
+namespace Restaurant
 {
     public class OrderItem
     {
@@ -6,14 +8,17 @@
         {
         }
 
-        public OrderItem(int id, int quantity)
+        public OrderItem(string description, double price, int quantity)
         {
-            Id = id;
+            Price = price;
+            Description = description;
             Quantity = quantity;
         }
 
-        public int Id { get; }
+        public string Description { get; set; }
 
-        public int Quantity { get; }
+        public double Price { get; set; }
+
+        public int Quantity { get; set; }
     }
 }

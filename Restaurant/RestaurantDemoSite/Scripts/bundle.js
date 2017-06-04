@@ -13216,7 +13216,7 @@ var addMenuItemToOrder,
     tableToJson = function () {
         var data, headers, orderCartTable, myTableRow, rowData, i, j;
 
-        headers = ["Quantity", "Id"];
+        headers = ["Qnt.", "Id", "Description", "Price"];
         data = [];
         orderCartTable = document.getElementById("order_cart");
 
@@ -13225,7 +13225,7 @@ var addMenuItemToOrder,
             myTableRow = orderCartTable.rows[i];
             rowData = {};
 
-            for (j = 0; j < 2; j++) {
+            for (j = 0; j < 4; j++) {
                 rowData[headers[j]] = myTableRow.cells[j].innerHTML;
             }
 
