@@ -20,7 +20,6 @@ namespace Restaurant
 
             var collectionOrders = database.GetCollection<Order>("orders");
             await collectionOrders.DeleteManyAsync(x => x.Id != ObjectId.Empty);
-            await collectionOrders.InsertManyAsync(new RestaurantOrder());
             var orderItems = new List<OrderItem>
             {
                 new OrderItem("Tea", 2.99, 2),

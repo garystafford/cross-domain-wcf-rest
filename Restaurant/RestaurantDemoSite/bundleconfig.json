@@ -2,7 +2,7 @@
   {
     "outputFileName": "Scripts/bundle.js",
     "inputFiles": [
-      "Scripts/jquery-3.1.1.js",
+      "Scripts/jquery-3.2.1.js",
       "Scripts/bootstrap.js",
       "Scripts/jquery.formatCurrency.js",
       "Scripts/restaurant.js"
