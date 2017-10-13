@@ -32,9 +32,11 @@ namespace Restaurant
                 NormalizeJsonString(ref restaurantOrder);
 
                 //Json.NET: http://james.newtonking.com/projects/json-net.aspx
-                var order = JsonConvert.DeserializeObject<RestaurantOrder>(restaurantOrder);
+                var order = JsonConvert.DeserializeObject<List<OrderItem>>(restaurantOrder);
+                
+                var orderItems = new Order(order);
 
-                WriteOrderToMongo(order, orderId);
+                WriteOrderToMongo(orderItems, orderId);
 
                 return new OrderResponse(
                     DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
@@ -57,15 +59,13 @@ namespace Restaurant
             restaurantOrder = restaurantOrder.Substring(start, length);
         }
 
-        private static async void WriteOrderToMongo(RestaurantOrder order, Guid orderId)
+        private static async void WriteOrderToMongo(Order order, Guid orderId)
         {
             var mongoConnectionFactory = new MongoAuthConnectionFactory();
             var database = mongoConnectionFactory.MongoDatabase("restaurant");
-            Log.Info(database.Settings.ToString());
 
-            var collectionOrders = database.GetCollection<RestaurantOrder>("orders");
+            var collectionOrders = database.GetCollection<Order>("orders");
             await collectionOrders.InsertOneAsync(order);
-        
         }
     }
 }

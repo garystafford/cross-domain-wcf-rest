@@ -9,18 +9,18 @@ namespace RestaurantWcfService
     AspNetCompatibilityRequirementsMode.Allowed)]
     public class RestaurantService : IRestaurantService
     {
-        public RestaurantMenu GetCurrentMenu()
+        public Menu GetCurrentMenu()
         {
             //Instantiates new RestaurantMenu object and
             //sorts MeuItem objects by byDescription using LINQ
-            var menuToReturn = new RestaurantMenu();
+            var menuToReturn = new Menu();
 
             var menuToReturnOrdered = (
                 from items in menuToReturn
                 orderby items.Description
                 select items).ToList();
 
-            menuToReturn = new RestaurantMenu(menuToReturnOrdered);
+            menuToReturn = new Menu(menuToReturnOrdered);
             return menuToReturn;
         }
 

@@ -9,13 +9,13 @@ namespace Restaurant.Models
         {
         }
 
-        public Order(List<OrderItem> orderItems)
+        public Order(IList<OrderItem> orderItems)
         {
             OrderItems = orderItems;
         }
 
         public ObjectId Id { get; set; }
 
-        public List<OrderItem> OrderItems { get; set; }
+        public IList<OrderItem> OrderItems { get; set; }
     }
 }

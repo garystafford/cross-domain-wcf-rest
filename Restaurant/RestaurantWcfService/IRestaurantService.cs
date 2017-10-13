@@ -15,7 +15,7 @@ namespace RestaurantWcfService
         RequestFormat = WebMessageFormat.Json,
         ResponseFormat = WebMessageFormat.Json)]
         [AspNetCacheProfile("CacheFor10Seconds")]
-        RestaurantMenu GetCurrentMenu();
+        Menu GetCurrentMenu();
 
         [OperationContract]
         [Description("Accepts a menu order and return an order confirmation.")]

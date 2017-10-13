@@ -95,10 +95,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Models\RestaurantMenu.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\RestaurantOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

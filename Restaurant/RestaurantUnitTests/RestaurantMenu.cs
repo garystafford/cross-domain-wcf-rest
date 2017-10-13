@@ -11,7 +11,7 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_RestaurantMenu_DefaultConstructor_ReturnsMutlipleMenuItems()
         {
-            var restaurantMenu = new Restaurant.Models.RestaurantMenu();
+            var restaurantMenu = new Restaurant.Models.Menu();
             Assert.IsTrue(restaurantMenu.Count > 1);
         }
 
@@ -20,7 +20,7 @@ namespace RestaurantUnitTests
         {
             var menuItem = new MenuItem("Test Item", 9.99);
             var menuList = new Collection<MenuItem> {menuItem};
-            var restaurantMenu = new Restaurant.Models.RestaurantMenu(menuList);
+            var restaurantMenu = new Restaurant.Models.Menu(menuList);
             Assert.AreEqual(restaurantMenu.Count, 1);
         }
     }

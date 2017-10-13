@@ -16,20 +16,21 @@ namespace Restaurant
         {
             var mongoConnectionFactory = new MongoAuthConnectionFactory();
             var database = mongoConnectionFactory.MongoDatabase("restaurant");
-            Log.Info(database.Settings.ToString());
 
             var collectionMenuItems = database.GetCollection<MenuItem>("menuItems");
             await collectionMenuItems.DeleteManyAsync(x => x.Description != "");
-            await collectionMenuItems.InsertManyAsync(new RestaurantMenu());
+            await collectionMenuItems.InsertManyAsync(new Menu());
             await collectionMenuItems.InsertOneAsync(new MenuItem("Tofu", 3.49));
 
-            var collectionOrders = database.GetCollection<RestaurantOrder>("orders");
+            var collectionOrders = database.GetCollection<Order>("orders");
             var orderItems = new List<OrderItem>
             {
                 new OrderItem("Tea", 2.99, 2),
                 new OrderItem("Fudge Bar", 1.29, 1)
             };
-            await collectionOrders.InsertOneAsync(new RestaurantOrder(orderItems));
+
+            var order = new Order(orderItems);
+            await collectionOrders.InsertOneAsync(order);
 
 
             var list = await collectionMenuItems

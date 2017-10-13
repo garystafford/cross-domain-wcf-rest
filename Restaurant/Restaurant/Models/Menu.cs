@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 
 namespace Restaurant.Models
 {
-    public class RestaurantMenu : Collection<MenuItem>
+    public class Menu : Collection<MenuItem>
     {
-        public RestaurantMenu()
+        public Menu()
         {
             //Pre-load the instance of RestaurantMenu with MenuItem(s) for the demo
             Add(new MenuItem { Description = "Cheeseburger", Price = 3.99 });
@@ -20,7 +20,7 @@ namespace Restaurant.Models
             Add(new MenuItem { Description = "Ice Cream Cone", Price = 1.99 });
         }
 
-        public RestaurantMenu(IList<MenuItem> list)
+        public Menu(IList<MenuItem> list)
             : base(list)
         {
         }
