@@ -63,9 +63,9 @@ namespace Restaurant
             var database = mongoConnectionFactory.MongoDatabase("restaurant");
             Log.Info(database.Settings.ToString());
 
-            var collectionOrders = database.GetCollection<Order>("orders");
-            await collectionOrders.DeleteManyAsync(x => x.Id != ObjectId.Empty);
-            await collectionOrders.InsertManyAsync(order);
+            var collectionOrders = database.GetCollection<RestaurantOrder>("orders");
+            await collectionOrders.InsertOneAsync(order);
+        
         }
     }
 }

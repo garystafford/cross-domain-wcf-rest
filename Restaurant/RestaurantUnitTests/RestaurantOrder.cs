@@ -15,7 +15,7 @@ namespace RestaurantUnitTests
             var orderItem1 = new OrderItem("Tofu", 3.49, 2);
             var orderItem2 = new OrderItem("Noodles", 5.89, 1);
             var orderList = new List<OrderItem> {orderItem1, orderItem2};
-            var restaurantOrder = new Restaurant.Models.RestaurantOrder {new Order(orderList)};
+            var restaurantOrder = new Restaurant.Models.RestaurantOrder(orderList);
             Assert.AreEqual(restaurantOrder.Count, 2);
         }
     }

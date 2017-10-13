@@ -23,14 +23,13 @@ namespace Restaurant
             await collectionMenuItems.InsertManyAsync(new RestaurantMenu());
             await collectionMenuItems.InsertOneAsync(new MenuItem("Tofu", 3.49));
 
-            var collectionOrders = database.GetCollection<Order>("orders");
-            await collectionOrders.DeleteManyAsync(x => x.Id != ObjectId.Empty);
+            var collectionOrders = database.GetCollection<RestaurantOrder>("orders");
             var orderItems = new List<OrderItem>
             {
                 new OrderItem("Tea", 2.99, 2),
                 new OrderItem("Fudge Bar", 1.29, 1)
             };
-            await collectionOrders.InsertOneAsync(new Order(orderItems));
+            await collectionOrders.InsertOneAsync(new RestaurantOrder(orderItems));
 
 
             var list = await collectionMenuItems
