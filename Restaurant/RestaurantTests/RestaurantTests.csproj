@@ -70,6 +70,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="MongoDbTestTests.cs" />
+    <Compile Include="ProcessOrderMongoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Restaurant;
 using System.Linq;
 using System.ServiceModel.Activation;
+using Restaurant.Models;
 
 namespace RestaurantWcfService
 {
@@ -27,7 +28,7 @@ namespace RestaurantWcfService
         {
             //Instantiates new ProcessOrder object and
             //passes JSON-format order string to ProcessOrderJSON method
-            var orderProcessor = new ProcessOrder();
+            var orderProcessor = new ProcessOrderMongo();
             var orderResponse =
                 orderProcessor.ProcessOrderJson(restaurantOrder);
 

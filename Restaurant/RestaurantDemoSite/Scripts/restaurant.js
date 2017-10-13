@@ -208,7 +208,7 @@ var addMenuItemToOrder,
     // Based on code from:
     // http://johndyer.name/post/table-tag-to-json-data.aspx
     tableToJson = function () {
-        var data, headers, orderCartTable, myTableRow, rowData, i, j;
+        var data, headers, orderCartTable, myTableRow, rowData, i;
 
         headers = ["Qnt.", "Id", "Description", "Price"];
         data = [];
@@ -218,11 +218,9 @@ var addMenuItemToOrder,
         for (i = 1; i < orderCartTable.rows.length - 1; i++) {
             myTableRow = orderCartTable.rows[i];
             rowData = {};
-
-            for (j = 0; j < 4; j++) {
-                rowData[headers[j]] = myTableRow.cells[j].innerHTML;
-            }
-
+            rowData[headers[0]] = myTableRow.cells[0].innerHTML;
+            rowData[headers[2]] = myTableRow.cells[2].innerHTML;
+            rowData[headers[3]] = myTableRow.cells[3].innerHTML;
             data.push(rowData);
         }
 

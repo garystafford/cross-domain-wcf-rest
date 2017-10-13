@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Restaurant;
+using Restaurant.Models;
 
 namespace RestaurantUnitTests
 {
@@ -10,7 +11,7 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_RestaurantMenu_DefaultConstructor_ReturnsMutlipleMenuItems()
         {
-            var restaurantMenu = new Restaurant.RestaurantMenu();
+            var restaurantMenu = new Restaurant.Models.RestaurantMenu();
             Assert.IsTrue(restaurantMenu.Count > 1);
         }
 
@@ -19,7 +20,7 @@ namespace RestaurantUnitTests
         {
             var menuItem = new MenuItem("Test Item", 9.99);
             var menuList = new Collection<MenuItem> {menuItem};
-            var restaurantMenu = new Restaurant.RestaurantMenu(menuList);
+            var restaurantMenu = new Restaurant.Models.RestaurantMenu(menuList);
             Assert.AreEqual(restaurantMenu.Count, 1);
         }
     }

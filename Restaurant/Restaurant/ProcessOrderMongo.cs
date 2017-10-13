@@ -1,18 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using log4net;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using Newtonsoft.Json;
 using Restaurant.Models;
 
 namespace Restaurant
 {
-    public class ProcessOrder
+    public class ProcessOrderMongo
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
-
-        public const string StrJsonFilePath = @"c:\RestaurantOrders\";
 
         public OrderResponse ProcessOrderJson(string restaurantOrder)
         {
@@ -33,11 +34,11 @@ namespace Restaurant
                 //Json.NET: http://james.newtonking.com/projects/json-net.aspx
                 var order = JsonConvert.DeserializeObject<RestaurantOrder>(restaurantOrder);
 
-                WriteOrderToFile(restaurantOrder, orderId);
+                WriteOrderToMongo(order, orderId);
 
                 return new OrderResponse(
                     DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                    orderId, order.Count(), "Thank you for your order!");
+                    orderId, 0, "Thank you for your order!");
             }
             catch (Exception ex)
             {
@@ -56,15 +57,15 @@ namespace Restaurant
             restaurantOrder = restaurantOrder.Substring(start, length);
         }
 
-        private static void WriteOrderToFile(string restaurantOrder, Guid orderId)
+        private static async void WriteOrderToMongo(RestaurantOrder order, Guid orderId)
         {
-            //Make sure to add permissions for IUSR to folder path
-            var fileName = $"{StrJsonFilePath}{orderId}.txt";
+            var mongoConnectionFactory = new MongoAuthConnectionFactory();
+            var database = mongoConnectionFactory.MongoDatabase("restaurant");
+            Log.Info(database.Settings.ToString());
 
-            using (TextWriter writer = new StreamWriter(fileName))
-            {
-                writer.Write(restaurantOrder);
-            }
+            var collectionOrders = database.GetCollection<Order>("orders");
+            await collectionOrders.DeleteManyAsync(x => x.Id != ObjectId.Empty);
+            await collectionOrders.InsertManyAsync(order);
         }
     }
 }

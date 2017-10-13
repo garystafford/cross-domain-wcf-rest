@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using log4net;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Restaurant.Models;
 
 namespace Restaurant
 {
     public class MongoDbTest
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
+
         public async Task<List<MenuItem>> TestMongo()
         {
-            var client = new MongoClient("mongodb://13.92.188.80:27017");
-            var database = client.GetDatabase("restaurant");
+            var mongoConnectionFactory = new MongoAuthConnectionFactory();
+            var database = mongoConnectionFactory.MongoDatabase("restaurant");
+            Log.Info(database.Settings.ToString());
 
             var collectionMenuItems = database.GetCollection<MenuItem>("menuItems");
             await collectionMenuItems.DeleteManyAsync(x => x.Description != "");
@@ -28,7 +33,8 @@ namespace Restaurant
             await collectionOrders.InsertOneAsync(new Order(orderItems));
 
 
-            var list = await collectionMenuItems.Find(x => x.Description == "Tofu")
+            var list = await collectionMenuItems
+                .Find(x => x.Description == "Tofu")
                 .ToListAsync();
 
             foreach (var menuItem in list)
