@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using MongoDB.Bson;
 
 namespace Restaurant.Models
 {
     [DataContract]
     public class OrderResponse
     {
-        public OrderResponse(string orderTime, Guid orderId,
-            int itemCount, string orderMessage)
+        public OrderResponse(string orderTime, ObjectId orderId, string orderMessage)
         {
             OrderTime = orderTime;
             OrderId = orderId;
-            ItemCount = itemCount;
             OrderMessage = orderMessage;
         }
 
@@ -19,10 +18,7 @@ namespace Restaurant.Models
         public string OrderTime { get; private set; }
 
         [DataMember]
-        public Guid OrderId { get; private set; }
-
-        [DataMember]
-        public int ItemCount { get; private set; }
+        public ObjectId OrderId { get; private set; }
 
         [DataMember]
         public string OrderMessage { get; private set; }

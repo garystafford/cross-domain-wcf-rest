@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MongoDB.Bson;
+
 
 namespace RestaurantUnitTests
 {
@@ -12,8 +14,8 @@ namespace RestaurantUnitTests
         {
             var orderResponse = new Restaurant.Models.OrderResponse(
                 DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                Guid.NewGuid(), 1, "Test Message");
-            Assert.AreEqual(orderResponse.ItemCount, 1);
+                ObjectId.GenerateNewId(), "Test Message");
+            Assert.AreEqual(orderResponse.OrderMessage, "Test Message");
         }
     }
 }

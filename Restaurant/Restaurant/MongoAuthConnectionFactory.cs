@@ -3,9 +3,9 @@ using MongoDB.Driver;
 
 namespace Restaurant
 {
-    public class MongoAuthConnectionFactory : IMongoConnectionFactory
+    public static class MongoAuthConnectionFactory
     {
-        public IMongoDatabase MongoDatabase(string databaseName)
+        public static IMongoDatabase MongoDatabase(string databaseName)
         {
             const string mongoConnectionString = "localhost:27017?authSource=admin";
             const string mongoUsername = "demoAdmin";

@@ -80,16 +80,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildMenu.cs" />
     <Compile Include="MongoNoAuthConnectionFactory.cs" />
     <Compile Include="MongoAuthConnectionFactory.cs" />
-    <Compile Include="IMongoConnectionFactory.cs" />
     <Compile Include="AtlasConnectionFactory.cs" />
     <Compile Include="MongoDbTest.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderResponse.cs" />
     <Compile Include="ProcessOrderMongo.cs" />
-    <Compile Include="ProcessOrder.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

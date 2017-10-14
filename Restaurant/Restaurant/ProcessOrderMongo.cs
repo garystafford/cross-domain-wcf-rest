@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using log4net;
 using MongoDB.Bson;
-using MongoDB.Driver;
 using Newtonsoft.Json;
 using Restaurant.Models;
 
@@ -13,18 +10,16 @@ namespace Restaurant
 {
     public class ProcessOrderMongo
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrderMongo));
 
         public OrderResponse ProcessOrderJson(string restaurantOrder)
         {
-            var orderId = Guid.NewGuid();
-
             if (restaurantOrder.Length < 1)
             {
                 Log.Info("Error: Empty message string...");
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId,
-                    0, "Sorry, empty order received.");
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
+                    ObjectId.GenerateNewId(), "Sorry, empty order received.");
             }
 
             try
@@ -33,20 +28,19 @@ namespace Restaurant
 
                 //Json.NET: http://james.newtonking.com/projects/json-net.aspx
                 var order = JsonConvert.DeserializeObject<List<OrderItem>>(restaurantOrder);
-                
                 var orderItems = new Order(order);
-
-                WriteOrderToMongo(orderItems, orderId);
+                WriteOrderToMongo(orderItems);
 
                 return new OrderResponse(
                     DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                    orderId, 0, "Thank you for your order!");
+                    ObjectId.GenerateNewId(), "Thank you for your order!");
             }
             catch (Exception ex)
             {
                 Log.Info("Error: " + ex.Message);
                 return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture), orderId, 0, ex.Message);
+                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
+                    ObjectId.GenerateNewId(), ex.Message);
             }
         }
 
@@ -59,13 +53,11 @@ namespace Restaurant
             restaurantOrder = restaurantOrder.Substring(start, length);
         }
 
-        private static async void WriteOrderToMongo(Order order, Guid orderId)
+        private static void WriteOrderToMongo(Order order)
         {
-            var mongoConnectionFactory = new MongoAuthConnectionFactory();
-            var database = mongoConnectionFactory.MongoDatabase("restaurant");
-
+            var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
             var collectionOrders = database.GetCollection<Order>("orders");
-            await collectionOrders.InsertOneAsync(order);
+            collectionOrders.InsertOneAsync(order);
         }
     }
 }

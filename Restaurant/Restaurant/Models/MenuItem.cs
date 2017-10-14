@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace Restaurant.Models
 {
@@ -14,10 +14,11 @@ namespace Restaurant.Models
             Price = price;
         }
 
-        public ObjectId Id { get; set; }
 
+        [BsonElement("description")]
         public string Description { get; set; }
 
+        [BsonElement("price")]
         public double Price { get; set; }
     }
 }

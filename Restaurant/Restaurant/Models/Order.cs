@@ -1,21 +1,17 @@
 ﻿using System.Collections.Generic;
-using MongoDB.Bson;
+using System.Collections.ObjectModel;
 
 namespace Restaurant.Models
 {
-    public class Order
+    public class Order : Collection<OrderItem>
     {
         public Order()
         {
         }
 
         public Order(IList<OrderItem> orderItems)
+            : base(orderItems)
         {
-            OrderItems = orderItems;
         }
-
-        public ObjectId Id { get; set; }
-
-        public IList<OrderItem> OrderItems { get; set; }
     }
 }

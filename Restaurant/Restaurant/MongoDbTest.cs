@@ -10,12 +10,11 @@ namespace Restaurant
 {
     public class MongoDbTest
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrderMongo));
 
         public async Task<List<MenuItem>> TestMongo()
         {
-            var mongoConnectionFactory = new MongoAuthConnectionFactory();
-            var database = mongoConnectionFactory.MongoDatabase("restaurant");
+            var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
 
             var collectionMenuItems = database.GetCollection<MenuItem>("menuItems");
             await collectionMenuItems.DeleteManyAsync(x => x.Description != "");
@@ -25,8 +24,8 @@ namespace Restaurant
             var collectionOrders = database.GetCollection<Order>("orders");
             var orderItems = new List<OrderItem>
             {
-                new OrderItem("Tea", 2.99, 2),
-                new OrderItem("Fudge Bar", 1.29, 1)
+                new OrderItem(2, "Tea", 2.99),
+                new OrderItem(1, "Fudge Bar", 1.29)
             };
 
             var order = new Order(orderItems);
