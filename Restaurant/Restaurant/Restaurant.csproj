@@ -88,7 +88,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderResponse.cs" />
-    <Compile Include="ProcessOrderMongo.cs" />
+    <Compile Include="ProcessOrder.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

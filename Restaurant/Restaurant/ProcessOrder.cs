@@ -8,9 +8,9 @@ using Restaurant.Models;
 
 namespace Restaurant
 {
-    public class ProcessOrderMongo
+    public class ProcessOrder
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrderMongo));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
 
         public OrderResponse ProcessOrderJson(string restaurantOrder)
         {

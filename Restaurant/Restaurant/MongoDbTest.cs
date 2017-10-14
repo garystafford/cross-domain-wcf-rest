@@ -8,7 +8,7 @@ namespace Restaurant
 {
     public class MongoDbTest
     {
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrderMongo));
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
 
         public void TestMongo()
         {

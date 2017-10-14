@@ -28,7 +28,7 @@ namespace RestaurantWcfService
         {
             //Instantiates new ProcessOrder object and
             //passes JSON-format order string to ProcessOrderJSON method
-            var orderProcessor = new ProcessOrderMongo();
+            var orderProcessor = new ProcessOrder();
             var orderResponse =
                 orderProcessor.ProcessOrderJson(restaurantOrder);
 
