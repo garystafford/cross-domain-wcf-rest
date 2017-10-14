@@ -7,9 +7,9 @@ namespace Restaurant
     {
         public static IMongoDatabase MongoDatabase(string databaseName)
         {
-            var client = new MongoClient($"mongodb://localhost:27017");
-            var database = client.GetDatabase(databaseName);
-            return database;
+            var mongoClient = new MongoClient($"mongodb://localhost:27017");
+            var mongoDatabase = mongoClient.GetDatabase(databaseName);
+            return mongoDatabase;
         }
     }
 }

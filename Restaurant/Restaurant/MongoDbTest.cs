@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using log4net;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using Restaurant.Models;
 
@@ -12,14 +10,14 @@ namespace Restaurant
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrderMongo));
 
-        public async Task<List<MenuItem>> TestMongo()
+        public void TestMongo()
         {
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
 
             var collectionMenuItems = database.GetCollection<MenuItem>("menuItems");
-            await collectionMenuItems.DeleteManyAsync(x => x.Description != "");
-            await collectionMenuItems.InsertManyAsync(new Menu());
-            await collectionMenuItems.InsertOneAsync(new MenuItem("Tofu", 3.49));
+            collectionMenuItems.DeleteMany(x => x.Description != "");
+            collectionMenuItems.InsertMany(new Menu());
+            collectionMenuItems.InsertOne(new MenuItem("Tofu", 3.49));
 
             var collectionOrders = database.GetCollection<Order>("orders");
             var orderItems = new List<OrderItem>
@@ -29,17 +27,16 @@ namespace Restaurant
             };
 
             var order = new Order(orderItems);
-            await collectionOrders.InsertOneAsync(order);
+            collectionOrders.InsertOne(order);
 
 
-            var list = await collectionMenuItems
-                .Find(x => x.Description == "Tofu")
-                .ToListAsync();
+            //var list = collectionMenuItems
+            //    .Find(x => x.Description == "Tofu");
 
-            foreach (var menuItem in list)
-                Console.WriteLine(menuItem.Description);
+            //foreach (var menuItem in list)
+            //    Console.WriteLine(menuItem);
 
-            return list;
+            //return list;
         }
     }
 }

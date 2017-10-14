@@ -57,7 +57,7 @@ namespace Restaurant
         {
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
             var collectionOrders = database.GetCollection<Order>("orders");
-            collectionOrders.InsertOneAsync(order);
+            collectionOrders.InsertOne(order);
         }
     }
 }

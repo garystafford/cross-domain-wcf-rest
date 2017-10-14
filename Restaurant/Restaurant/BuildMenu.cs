@@ -21,7 +21,7 @@ namespace Restaurant
             };
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
             var collectionMenuItems = database.GetCollection<MenuItem>("menu");
-            collectionMenuItems.InsertManyAsync(menu);
+            collectionMenuItems.InsertMany(menu);
         }
 
 
