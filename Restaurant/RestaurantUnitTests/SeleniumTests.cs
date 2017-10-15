@@ -42,7 +42,7 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_MenuItemsCount_IsExpectedInteger()
         {
-            const int expectedMenuItemsCount = 11;
+            const int expectedMenuItemsCount = 10;
             var webElement = _webDriver.FindElement(By.Id("select_item"));
             var actualMenuItems = webElement.FindElements(By.TagName("option"));
             Assert.AreEqual(expectedMenuItemsCount, actualMenuItems.Count);
@@ -145,7 +145,7 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_ClickOrderButtonWithOneItem_DisplaysExpectedMessage()
         {
-            const string expectedMessage = "Message: Thank you for your order!";
+            const string expectedMessage = "Message: Thank you for your order.";
             var webElement = _webDriver.FindElement(By.Id("select_quantity"));
             webElement.SendKeys("1");
             webElement = _webDriver.FindElement(By.XPath("//*[@id=\"select_item\"]/option[2]"));
