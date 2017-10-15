@@ -9,7 +9,7 @@ namespace RestaurantTests
         [TestMethod]
         public void BuildMenuTest()
         {
-            BuildMenu.AddMenuToMongo();
+            RestaurantMenu.BuildMenu();
 
             //Assert.Fail();
         }

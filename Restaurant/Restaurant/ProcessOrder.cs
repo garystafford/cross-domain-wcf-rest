@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using log4net;
-using MongoDB.Bson;
 using Newtonsoft.Json;
+using Restaurant.Database;
 using Restaurant.Models;
 
 namespace Restaurant
@@ -12,14 +11,12 @@ namespace Restaurant
     {
         private static readonly ILog Log = LogManager.GetLogger(typeof(ProcessOrder));
 
-        public OrderResponse ProcessOrderJson(string restaurantOrder)
+        public OrderResponse ProcessOrderMongo(string restaurantOrder)
         {
             if (restaurantOrder.Length < 1)
             {
-                Log.Info("Error: Empty message string...");
-                return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                    ObjectId.GenerateNewId(), "Sorry, empty order received.");
+                Log.Warn("Warning: Empty order received");
+                return new OrderResponse {OrderMessage = "Sorry, empty order received?"};
             }
 
             try
@@ -28,19 +25,21 @@ namespace Restaurant
 
                 //Json.NET: http://james.newtonking.com/projects/json-net.aspx
                 var order = JsonConvert.DeserializeObject<List<OrderItem>>(restaurantOrder);
+
                 var orderItems = new Order(order);
                 WriteOrderToMongo(orderItems);
 
-                return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                    ObjectId.GenerateNewId(), "Thank you for your order!");
+                Log.Info("Info: Order processed correctly");
+
+                return new OrderResponse {OrderMessage = "Thank you for your order."};
             }
             catch (Exception ex)
             {
-                Log.Info("Error: " + ex.Message);
-                return new OrderResponse(
-                    DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                    ObjectId.GenerateNewId(), ex.Message);
+                Log.Error("Error: " + ex.Message);
+                return new OrderResponse
+                {
+                    OrderMessage = "Sorry, an error has occurred/ Please place your order again."
+                };
             }
         }
 
@@ -56,6 +55,7 @@ namespace Restaurant
         private static void WriteOrderToMongo(Order order)
         {
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
+            database.DropCollection("orders");
             var collectionOrders = database.GetCollection<Order>("orders");
             collectionOrders.InsertOne(order);
         }

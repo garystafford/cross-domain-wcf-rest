@@ -11,28 +11,14 @@ namespace RestaurantWcfService
     {
         public Menu GetCurrentMenu()
         {
-            //Instantiates new RestaurantMenu object and
-            //sorts MeuItem objects by byDescription using LINQ
-            var menuToReturn = new Menu();
-
-            var menuToReturnOrdered = (
-                from items in menuToReturn
-                orderby items.Description
-                select items).ToList();
-
-            menuToReturn = new Menu(menuToReturnOrdered);
-            return menuToReturn;
+            RestaurantMenu.BuildMenu();
+            return RestaurantMenu.GetMenu(); ;
         }
 
         public OrderResponse SendOrder(string restaurantOrder)
         {
-            //Instantiates new ProcessOrder object and
-            //passes JSON-format order string to ProcessOrderJSON method
             var orderProcessor = new ProcessOrder();
-            var orderResponse =
-                orderProcessor.ProcessOrderJson(restaurantOrder);
-
-            return orderResponse;
+            return orderProcessor.ProcessOrderMongo(restaurantOrder);
         }
     }
 }

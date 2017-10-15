@@ -79,7 +79,6 @@ var addMenuItemToOrder,
     addMenuItemToOrder = function () {
         var orderItemSelectedQuantity,
             selectedItem,
-            orderItemSelectedId,
             orderItemSelectedDescription,
             orderItemSelectedPrice,
             orderItemSelectedSubtotal;
@@ -103,7 +102,6 @@ var addMenuItemToOrder,
 
         // Get values
         selectedItem = $("#select_item option:selected");
-        orderItemSelectedId = parseInt(selectedItem.val(), 10);
         orderItemSelectedDescription = selectedItem.text();
         orderItemSelectedPrice = parseFloat(selectedItem.attr("title"));
 
@@ -116,8 +114,6 @@ var addMenuItemToOrder,
         $("<tr class='order_row'></tr>").html("<td>" +
             orderItemSelectedQuantity +
             "</td><td class='order_item_id hidden'>" +
-            orderItemSelectedId +
-            "</td><td class='order_item_name'>" +
             orderItemSelectedDescription +
             "</td><td class='order_item_price'>" +
             orderItemSelectedPrice +
@@ -210,7 +206,7 @@ var addMenuItemToOrder,
     tableToJson = function () {
         var data, headers, orderCartTable, myTableRow, rowData, i;
 
-        headers = ["Qnt.", "Id", "Description", "Price"];
+        headers = ["Quantity", "Description", "Price"];
         data = [];
         orderCartTable = document.getElementById("order_cart");
 
@@ -219,8 +215,8 @@ var addMenuItemToOrder,
             myTableRow = orderCartTable.rows[i];
             rowData = {};
             rowData[headers[0]] = myTableRow.cells[0].innerHTML;
-            rowData[headers[2]] = myTableRow.cells[2].innerHTML;
-            rowData[headers[3]] = myTableRow.cells[3].innerHTML;
+            rowData[headers[1]] = myTableRow.cells[1].innerHTML;
+            rowData[headers[2]] = myTableRow.cells[2].innerHTML.replace("/$", "/");
             data.push(rowData);
         }
 

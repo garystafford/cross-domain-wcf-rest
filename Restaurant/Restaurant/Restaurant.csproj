@@ -80,11 +80,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildMenu.cs" />
-    <Compile Include="MongoNoAuthConnectionFactory.cs" />
-    <Compile Include="MongoAuthConnectionFactory.cs" />
-    <Compile Include="AtlasConnectionFactory.cs" />
-    <Compile Include="MongoDbTest.cs" />
+    <Compile Include="RestaurantMenu.cs" />
+    <Compile Include="Database\MongoNoAuthConnectionFactory.cs" />
+    <Compile Include="Database\MongoAuthConnectionFactory.cs" />
+    <Compile Include="Database\AtlasConnectionFactory.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderResponse.cs" />

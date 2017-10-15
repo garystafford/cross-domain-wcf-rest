@@ -1,7 +1,7 @@
 ﻿using System;
 using MongoDB.Driver;
 
-namespace Restaurant
+namespace Restaurant.Database
 {
     public static class AtlasConnectionFactory
     {

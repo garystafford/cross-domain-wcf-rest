@@ -1,7 +1,6 @@
-﻿using System;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
-namespace Restaurant
+namespace Restaurant.Database
 {
     public static class MongoAuthConnectionFactory
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Restaurant.Models
@@ -21,7 +20,7 @@ namespace Restaurant.Models
         }
 
         [BsonElement("order_number")]
-        public String OrderNumber { get; set; }
+        public string OrderNumber { get; set; }
 
         [BsonElement("order_time")]
         public DateTime OrderDateTime { get; set; }

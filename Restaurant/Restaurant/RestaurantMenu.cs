@@ -1,12 +1,14 @@
-﻿using Restaurant.Models;
+﻿using MongoDB.Driver;
+using Restaurant.Database;
+using Restaurant.Models;
 
 namespace Restaurant
 {
-    public static class BuildMenu
+    public static class RestaurantMenu
     {
-        public static void AddMenuToMongo()
+        public static void BuildMenu()
         {
-            var menu = new Menu()
+            var menu = new Menu
             {
                 new MenuItem {Description = "Cheeseburger", Price = 3.99},
                 new MenuItem {Description = "Hamburger", Price = 2.99},
@@ -20,10 +22,19 @@ namespace Restaurant
                 new MenuItem {Description = "Ice Cream Cone", Price = 1.99}
             };
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
+            database.DropCollection("menu");
             var collectionMenuItems = database.GetCollection<MenuItem>("menu");
             collectionMenuItems.InsertMany(menu);
         }
 
-
+        public static Menu GetMenu()
+        {
+            var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
+            var menuItems = database.GetCollection<MenuItem>("menu");
+            var menuItemsSorted = menuItems.Find(x => x.Price > 0)
+                .SortByDescending(x => x.Description)
+                .ToList();
+            return new Menu(menuItemsSorted);
+        }
     }
 }

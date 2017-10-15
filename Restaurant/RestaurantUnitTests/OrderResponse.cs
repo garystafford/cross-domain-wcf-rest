@@ -1,8 +1,4 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MongoDB.Bson;
-
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RestaurantUnitTests
 {
@@ -12,9 +8,10 @@ namespace RestaurantUnitTests
         [TestMethod]
         public void Test_OrderResponse_AddOrderViaConstructor_ItemCountEqualsOne()
         {
-            var orderResponse = new Restaurant.Models.OrderResponse(
-                DateTime.Now.ToLocalTime().ToString(CultureInfo.InvariantCulture),
-                ObjectId.GenerateNewId(), "Test Message");
+            var orderResponse = new Restaurant.Models.OrderResponse
+            {
+                OrderMessage = "Test Message"
+            };
             Assert.AreEqual(orderResponse.OrderMessage, "Test Message");
         }
     }

@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using MongoDB.Bson;
 
 namespace Restaurant.Models
 {
     [DataContract]
     public class OrderResponse
     {
-        public OrderResponse(string orderTime, ObjectId orderId, string orderMessage)
+        public OrderResponse()
         {
-            OrderTime = orderTime;
-            OrderId = orderId;
+        }
+
+        public OrderResponse(DateTime orderDateTime, string orderItems, string orderMessage)
+        {
+            OrderDateTime = orderDateTime;
+            OrderNumber = orderItems;
             OrderMessage = orderMessage;
         }
 
         [DataMember]
-        public string OrderTime { get; private set; }
+        public DateTime OrderDateTime { get; set; }
 
         [DataMember]
-        public ObjectId OrderId { get; private set; }
+        public string OrderNumber { get; set; }
 
         [DataMember]
-        public string OrderMessage { get; private set; }
+        public string OrderMessage { get; set; }
     }
 }
