@@ -10,7 +10,7 @@ namespace Restaurant.Models
         {
         }
 
-        public OrderResponse(DateTime orderDateTime, string orderItems, string orderMessage)
+        public OrderResponse(string orderDateTime, string orderItems, string orderMessage)
         {
             OrderDateTime = orderDateTime;
             OrderNumber = orderItems;
@@ -18,7 +18,7 @@ namespace Restaurant.Models
         }
 
         [DataMember]
-        public DateTime OrderDateTime { get; set; }
+        public string OrderDateTime { get; set; }
 
         [DataMember]
         public string OrderNumber { get; set; }

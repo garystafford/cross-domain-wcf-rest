@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Restaurant.Models
 {
+    [BsonIgnoreExtraElements]
     public class Order
     {
         public Order()

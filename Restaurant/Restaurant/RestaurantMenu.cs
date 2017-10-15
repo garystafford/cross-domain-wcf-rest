@@ -32,7 +32,7 @@ namespace Restaurant
             var database = MongoAuthConnectionFactory.MongoDatabase("restaurant");
             var menuItems = database.GetCollection<MenuItem>("menu");
             var menuItemsSorted = menuItems.Find(x => x.Price > 0)
-                .SortByDescending(x => x.Description)
+                .SortBy(x => x.Description)
                 .ToList();
             return new Menu(menuItemsSorted);
         }

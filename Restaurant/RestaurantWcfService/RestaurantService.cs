@@ -1,7 +1,6 @@
 ﻿using Restaurant;
-using System.Linq;
-using System.ServiceModel.Activation;
 using Restaurant.Models;
+using System.ServiceModel.Activation;
 
 namespace RestaurantWcfService
 {
@@ -12,7 +11,7 @@ namespace RestaurantWcfService
         public Menu GetCurrentMenu()
         {
             RestaurantMenu.BuildMenu();
-            return RestaurantMenu.GetMenu(); ;
+            return RestaurantMenu.GetMenu();
         }
 
         public OrderResponse SendOrder(string restaurantOrder)

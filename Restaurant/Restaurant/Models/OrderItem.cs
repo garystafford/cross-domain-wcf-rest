@@ -2,6 +2,7 @@
 
 namespace Restaurant.Models
 {
+    [BsonIgnoreExtraElements]
     public class OrderItem
     {
         public OrderItem()

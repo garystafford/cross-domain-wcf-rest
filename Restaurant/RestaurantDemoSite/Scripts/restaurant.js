@@ -113,7 +113,7 @@ var addMenuItemToOrder,
         // Write out menu selection to table row
         $("<tr class='order_row'></tr>").html("<td>" +
             orderItemSelectedQuantity +
-            "</td><td class='order_item_id hidden'>" +
+            "</td><td class='order_item_name'>" +
             orderItemSelectedDescription +
             "</td><td class='order_item_price'>" +
             orderItemSelectedPrice +
@@ -216,7 +216,7 @@ var addMenuItemToOrder,
             rowData = {};
             rowData[headers[0]] = myTableRow.cells[0].innerHTML;
             rowData[headers[1]] = myTableRow.cells[1].innerHTML;
-            rowData[headers[2]] = myTableRow.cells[2].innerHTML.replace("/$", "/");
+            rowData[headers[2]] = myTableRow.cells[2].innerHTML.substr(1);
             data.push(rowData);
         }
 
@@ -239,17 +239,17 @@ var addMenuItemToOrder,
                     "Order failed."
                 );
             },
-            success: function (confirmation) {
+            success: function (orderResponse) {
                 $("#orderResponse").html(
                     "<p class='h4'>Confirmation</p>" +
                     "Time: " +
-                    confirmation.OrderTime +
+                    orderResponse.OrderDateTime +
                     "<br />" +
                     "Order Id: " +
-                    confirmation.OrderId +
+                    orderResponse.OrderNumber +
                     "<br />" +
                     "Message: " +
-                    confirmation.OrderMessage
+                    orderResponse.OrderMessage
                 );
             }
         });
